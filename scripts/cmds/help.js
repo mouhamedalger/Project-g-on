@@ -12,7 +12,7 @@ const doNotDelete = "[ 🐐 | Goat Bot V2 ]";
 
 module.exports = {
 	config: {
-		name: "help7",
+		name: "help",
 		version: "1.21",
 		author: "NTKhang",
 		countDown: 5,
@@ -406,4 +406,4 @@ function cropContent(content, max) {
 		content = content + "...";
 	}
 	return content;
-		}
+			}
