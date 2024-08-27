@@ -46,11 +46,11 @@ module.exports = {
 
       Object.keys(categories).forEach((category) => {
         if (category !== "info") {
-          msg += `\n💻 ❄️🩹☞${category.toUpperCase()}☜❄️🩹 💻\n`;
+          msg += `\n💻 🎯🩹☞${category.toUpperCase()}☜🎯🩹 💻\n`;
 
           const names = categories[category].commands.sort();
           for (let i = 0; i < names.length; i += 3) {
-            const cmds = names.slice(i, i + 3).map((item) => `\n《🇹🇬👀🇹🇬》♫🎯♫☞ 🧬${item}🧬`);
+            const cmds = names.slice(i, i + 3).map((item) => `\n🇹🇬👀✨☞🧬${item}🧬`);
             msg += `\n ${cmds.join(" ".repeat(Math.max(1, 10 - cmds.join("").length)))}`;
           }
 
@@ -61,7 +61,7 @@ module.exports = {
       const totalCommands = commands.size;
       msg += `\n𝗖𝘂𝗿𝗿𝗲𝗻𝘁𝗹𝘆, 𝘁𝗵𝗲 𝗯𝗼𝘁 𝗵𝗮𝘀 ☣${totalCommands} 𝗰𝗼𝗺𝗺𝗮𝗻𝗱𝘀☣ 𝘁𝗵𝗮𝘁 𝗰𝗮𝗻 𝗯𝗲 𝘂𝘀𝗲𝗱\n`;
       msg += `𝗧𝘆𝗽𝗲 ${prefix} 𝗵𝗲𝗹𝗽 𝗰𝗺𝗱𝗡𝗮𝗺𝗲 𝘁𝗼 𝘃𝗶𝗲𝘄 𝘁𝗵𝗲 𝗱𝗲𝘁𝗮𝗶𝗹𝘀 𝗼𝗳 𝘁𝗵𝗮𝘁 𝗰𝗼𝗺𝗺𝗮𝗻𝗱\n`;
-      msg += `\n╭──── • 🔵 • ─────╮\n   『𝐒𝐇𝐀𝐃𝐎𝐖』\n╰──── • 🔵 • ─────╯`; // its not decoy so change it if you want 
+      msg += `\n╭──── • 🔵 • ─────╮\n   『𝐀𝐓𝐎𝐌𝐈𝐂✄𝔹𝕆𝕋』\n╰──── • 🔵 • ─────╯`; // its not decoy so change it if you want 
 
       const helpListImages = [
         "https://i.imgur.com/0Lepc52.mp4",
