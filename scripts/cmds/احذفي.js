@@ -16,15 +16,14 @@ module.exports = {
 
 	langs: {
 		en: {
-			returnCant: "رد على إحدى رسالاتي التي تريدني أن أحذفها 🙄",
-			missingReply: "من أنت حتى تأمرني 🤔، لن أحذف 🙄"
+			syntaxError: "رد على رسالتي التي تريد حذفها 🙄"
 		}
 	},
 
 	onStart: async function ({ message, event, api, getLang }) {
-	if (event.messageReply.senderID != api.getCurrentUserID()) return api.sendMessage(getLang("returnCant"), event.threadID, event.messageID);
-	if (event.type != "message_reply") return api.sendMessage(getLang("missingReply"), event.threadID, event.messageID);
-	return api.unsendMessage(event.messageReply.messageID);
+		if (!event.messageReply || event.messageReply.senderID != api.getCurrentUserID())
+			return message.reply(getLang("syntaxError"));
+		message.unsend(event.messageReply.messageID);
 	}
 };
 
