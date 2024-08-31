@@ -2,29 +2,16 @@ const { getPrefix } = global.utils;
 
 module.exports = {
 	config: {
-		name: "rules",
+		name: "القوانين",
 		version: "1.6",
 		author: "NTKhang",
 		countDown: 5,
 		role: 0,
 		description: {
-			vi: "Tạo/xem/thêm/sửa/đổi vị trí/xóa nội quy nhóm của bạn",
-			en: "Create/view/add/edit/change position/delete group rules of you"
+			en: "إنشاء/عرض/إضافة/تعديل/تغيير الترتيب/حذف قوانين المجموعة الخاصة بك"
 		},
 		category: "box chat",
 		guide: {
-			vi: "   {pn} [add | -a] <nội quy muốn thêm>: thêm nội quy cho nhóm."
-				+ "\n   {pn}: xem nội quy của nhóm."
-				+ "\n   {pn} [edit | -e] <n> <nội dung sau khi sửa>: chỉnh sửa lại nội quy thứ n."
-				+ "\n   {pn} [move | -m] <stt1> <stt2> hoán đổi vị trí của nội quy thứ <stt1> và <stt2> với nhau."
-				+ "\n   {pn} [delete | -d] <n>: xóa nội quy theo số thứ tự thứ n."
-				+ "\n   {pn} [remove | -r]: xóa tất cả nội quy của nhóm."
-				+ "\n"
-				+ "\n   Ví dụ:"
-				+ "\n    {pn} add không spam"
-				+ "\n    {pn} move 1 3"
-				+ "\n    {pn} -e 1 không spam tin nhắn trong nhóm"
-				+ "\n    {pn} -r",
 			en: "   {pn} [add | -a] <rule to add>: add rule for group."
 				+ "\n   {pn}: view group rules."
 				+ "\n   {pn} [edit | -e] <n> <content after edit>: edit rule number n."
@@ -41,32 +28,6 @@ module.exports = {
 	},
 
 	langs: {
-		vi: {
-			yourRules: "Nội quy của nhóm bạn\n%1",
-			noRules: "Hiện tại nhóm bạn chưa có bất kỳ nội quy nào, để thêm nội quy cho nhóm hãy sử dụng `%1rules add`",
-			noPermissionAdd: "Chỉ quản trị viên mới có thể thêm nội quy cho nhóm",
-			noContent: "Vui lòng nhập nội dung cho nội quy bạn muốn thêm",
-			success: "Đã thêm nội quy mới cho nhóm thành công",
-			noPermissionEdit: "Chỉ quản trị viên mới có thể chỉnh sửa nội quy nhóm",
-			invalidNumber: "Vui lòng nhập số thứ tự của quy định bạn muốn chỉnh sửa",
-			rulesNotExist: "Không tồn tại nội quy thứ %1",
-			numberRules: "Hiện tại nhóm bạn chỉ có %1 nội quy được đặt ra",
-			noContentEdit: "Vui lòng nhập nội dung bạn muốn thay đổi cho nội quy thứ %1",
-			successEdit: "Đã chỉnh sửa nội quy thứ %1 thành: %2",
-			noPermissionMove: "Chỉ quản trị viên mới có thể đổi vị trí nội quy của nhóm",
-			invalidNumberMove: "Vui lòng nhập số thứ tự của 2 nội quy nhóm bạn muốn chuyển đổi vị trí với nhau",
-			sameNumberMove: "Không thể chuyển đổi vị trí của 2 nội quy giống nhau",
-			rulesNotExistMove2: "Không tồn tại nội quy thứ %1 và %2",
-			successMove: "Đã chuyển đổi vị trí của 2 nội quy thứ %1 và %2 thành công",
-			noPermissionDelete: "Chỉ quản trị viên mới có thể xóa nội quy của nhóm",
-			invalidNumberDelete: "Vui lòng nhập số thứ tự của nội quy bạn muốn xóa",
-			rulesNotExistDelete: "Không tồn tại nội quy thứ %1",
-			successDelete: "Đã xóa nội quy thứ %1 của nhóm, nội dung: %2",
-			noPermissionRemove: "Chỉ có quản trị viên nhóm mới có thể xoá bỏ tất cả nội quy của nhóm",
-			confirmRemove: "⚠️ Thả cảm xúc bất kỳ vào tin nhắn này để xác nhận xóa toàn bộ nội quy của nhóm",
-			successRemove: "Đã xóa toàn bộ nội quy của nhóm thành công",
-			invalidNumberView: "Vui lòng nhập số thứ tự của nội quy bạn muốn xem"
-		},
 		en: {
 			yourRules: "Your group rules\n%1",
 			noRules: "Your group has no rules, to add rules for group use `%1rules add`",
@@ -114,7 +75,7 @@ module.exports = {
 				});
 			});
 		}
-		else if (["add", "-a"].includes(type)) {
+		else if (["اضافة", "اضيفي"].includes(type)) {
 			if (role < 1)
 				return message.reply(getLang("noPermissionAdd"));
 			if (!args[1])
@@ -128,7 +89,7 @@ module.exports = {
 				message.err(err);
 			}
 		}
-		else if (["edit", "-e"].includes(type)) {
+		else if (["تعديل"].includes(type)) {
 			if (role < 1)
 				return message.reply(getLang("noPermissionEdit"));
 			const stt = parseInt(args[1]);
@@ -148,7 +109,7 @@ module.exports = {
 				message.err(err);
 			}
 		}
-		else if (["move", "-m"].includes(type)) {
+		else if (["تحريك"].includes(type)) {
 			if (role < 1)
 				return message.reply(getLang("noPermissionMove"));
 			const num1 = parseInt(args[1]);
@@ -177,7 +138,7 @@ module.exports = {
 				message.err(err);
 			}
 		}
-		else if (["delete", "del", "-d"].includes(type)) {
+		else if (["حذف", "مسح", "إزالة"].includes(type)) {
 			if (role < 1)
 				return message.reply(getLang("noPermissionDelete"));
 			if (!args[1] || isNaN(args[1]))
@@ -189,7 +150,7 @@ module.exports = {
 			await threadsData.set(threadID, rulesOfThread, "data.rules");
 			message.reply(getLang("successDelete", args[1], rulesDel));
 		}
-		else if (["remove", "reset", "-r", "-rm"].includes(type)) {
+		else if (["حذفالكل", "مسحالكل", "إزالةالكل"].includes(type)) {
 			if (role < 1)
 				return message.reply(getLang("noPermissionRemove"));
 			message.reply(getLang("confirmRemove"), (err, info) => {
