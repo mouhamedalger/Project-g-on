@@ -8,33 +8,27 @@ module.exports = {
 		countDown: 5,
 		role: 0,
 		description: {
-			en: "إنشاء/عرض/إضافة/تعديل/تغيير الترتيب/حذف قوانين المجموعة الخاصة بك"
+			en: "عرض/إضافة/تعديل/تغيير الترتيب/حذف قوانين المجموعة الخاصة بك"
 		},
 		category: "box chat",
 		guide: {
-			en: "   {pn} [add | -a] <rule to add>: add rule for group."
-				+ "\n   {pn}: view group rules."
-				+ "\n   {pn} [edit | -e] <n> <content after edit>: edit rule number n."
-				+ "\n   {pn} [move | -m] <stt1> <stt2> swap position of rule number <stt1> and <stt2>."
-				+ "\n   {pn} [delete | -d] <n>: delete rule number n."
-				+ "\n   {pn} [remove | -r]: delete all rules of group."
-				+ "\n"
-				+ "\n   Example:"
-				+ "\n    {pn} add don't spam"
-				+ "\n    {pn} move 1 3"
-				+ "\n    {pn} -e 1 don't spam message in group"
-				+ "\n    {pn} -r"
+			en: "   {pn} [اضافة] <القانون الذي تريد إضافته>"
+				+ "\n   {pn}: قائمة القوانين"
+				+ "\n   {pn} [تعديل] <n> <القانون بعد التعديل>"
+				+ "\n   {pn} [تحريك] <stt1> <stt2>"
+				+ "\n   {pn} [حذف] <n>"
+				+ "\n   {pn} [حذفالكل]"
 		}
 	},
 
 	langs: {
 		en: {
 			yourRules: "Your group rules\n%1",
-			noRules: "Your group has no rules, to add rules for group use `%1rules add`",
-			noPermissionAdd: "Only admins can add rules for group",
-			noContent: "Please enter the content for the rule you want to add",
-			success: "Added new rule for group successfully",
-			noPermissionEdit: "Only admins can edit group rules",
+			noRules: "🌹 لا توجـد قوانيـن في هذه\nالمجمـوعـة، للإضـافة أڪتـب:\n%1قوانين اضافة وتكتب القانون",
+			noPermissionAdd: "من أنت حتى تضيف القوانين 🙍‍♀️",
+			noContent: "أكتب القانون الذي تريد إدخاله للقائمة، بعد كلمة أضف 🫠",
+			success: "✨ تمت إضافة قانون جديد بنجاح ✅، أحسنت 👌",
+			noPermissionEdit: "من أنت حتى تعدل القوانين 🙍‍♀️",
 			invalidNumber: "Please enter the number of the rule you want to edit",
 			rulesNotExist: "Rule number %1 does not exist",
 			numberRules: "Your group only has %1 rules",
@@ -75,7 +69,7 @@ module.exports = {
 				});
 			});
 		}
-		else if (["اضافة", "اضيفي"].includes(type)) {
+		else if (["اضافة"].includes(type)) {
 			if (role < 1)
 				return message.reply(getLang("noPermissionAdd"));
 			if (!args[1])
