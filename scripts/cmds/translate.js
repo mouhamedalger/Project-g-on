@@ -27,7 +27,7 @@ module.exports = {
 	langs: {
 		en: {
 			translateTo: "🌐 تمت الترجمة من %1 إلى %2",
-			invalidArgument: "إدخال خاطئ، أڪتب:\n%1ترجمي تفاعل تشغيل\n%1ترجمي تفاعل ايقاف",
+			invalidArgument: "إدخال خاطئ، أڪتب:\n.ترجمي تفاعل تشغيل\n.ترجمي تفاعل ايقاف",
 			turnOnTransWhenReaction: `✅ Turn on translate message when reaction, try to react \"${defaultEmojiTranslate}\" to any message to translate it (not support bot message)\n Only translate message after turn on this feature`,
 			turnOffTransWhenReaction: "✅ Turn off translate message when reaction",
 			inputEmoji: "🌀 Please react to this message to set that emoji as emoji to translate message",
@@ -49,7 +49,7 @@ module.exports = {
 			}
 			const isEnable = args[1] == "تشغيل" ? true : args[1] == "ايقاف" ? false : null;
 			if (isEnable == null)
-				return message.reply(getLang("invalidArgument", getPrefix));
+				return message.reply(getLang("invalidArgument"));
 			await threadsData.set(event.threadID, isEnable, "data.translate.autoTranslateWhenReaction");
 			return message.reply(isEnable ? getLang("turnOnTransWhenReaction") : getLang("turnOffTransWhenReaction"));
 		}
