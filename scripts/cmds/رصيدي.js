@@ -11,7 +11,7 @@ module.exports = {
 		},
 		category: "economy",
 		guide: {
-			en: "   {pn}: لعرض رصيدك"
+			ar: "   {pn}: لعرض رصيدك"
 				+ "\n   {pn} <@tag>: لعرض رصيد العضو الي تعمل له تاغ"
 		}
 	},
