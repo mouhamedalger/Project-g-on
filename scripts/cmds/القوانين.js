@@ -29,16 +29,17 @@ module.exports = {
 			noContent: "أكتب القانون الذي تࢪيد إدخاله للقائمة، بعد كلمة أضف 🫠",
 			success: "✨ تمت إضافة قانون جديد بنجاح ✅، أحسنت 👌",
 			noPermissionEdit: "من أنت حتى تعدل القوانين 🙍‍♀️",
-			invalidNumber: "Please enter the number of the rule you want to edit",
-			rulesNotExist: "Rule number %1 does not exist",
+			invalidNumber: "أدخل ࢪقم القانون الذي تࢪيد\nتعديله بعد ڪلمة تعديل 🫠",
+			rulesNotExist: "🌹 القانون %1 غير موجود 🙎‍♀️",
 			numberRules: "المجموعة بها %1 قانون فقط",
-			noContentEdit: "Please enter the content you want to change for rule number %1",
-			successEdit: "Edited rule number %1 to: %2",
+			noContentEdit: "🌹 أدخل النص المعدل بعد ࢪقم\nالقانـون الـذي تࢪيـد تعديـله 🙎‍♀️",
+			successEdit: "تم تعديل القانون ࢪقم 1 ✅\n🌹 القانون قبل التعديل: 🌹\n%1\n\n🌹 القانون بعد التعديل: 🌹\n%2",
 			noPermissionMove: "من أنت حتى تعدل تࢪتيب القوانين 🙍‍♀️",
-			invalidNumberMove: "Please enter the number of 2 group rules you want to swap",
-			sameNumberMove: "Cannot swap position of 2 same rules",
+			invalidNumberMove: "🌹 أدخل الࢪقميـن الذين تࢪيد\nمبادلتها، لا تكتب ࢪقما واحدا 🙎‍♀️",
+			sameNumberMove: "🌹 لا يمڪن تبديل القانـون\nࢪقــم %1 مــع نـفـســه 😹🤦‍♀️",
+			rulesNotExistMove: "number %1 and %2 not exist",
 			rulesNotExistMove2: "Rule number %1 and %2 does not exist",
-			successMove: "Swapped position of rule number %1 and %2 successfully",
+			successMove: "🌹 تم تبديل القانون ࢪقم %1\nمع القانون ࢪقم %2 بنجاح ✅",
 			noPermissionDelete: "من أنت حتى تحذف القوانين 🙍‍♀️",
 			invalidNumberDelete: "أدخل ࢪقم القانون الذي تࢪيد\nحذفـه بعد ڪلمة حـذف 🫠",
 			rulesNotExistDelete: "🌹 القانون %1 غيࢪ موجود 🙎‍♀️",
@@ -120,7 +121,7 @@ module.exports = {
 				return message.reply(msg);
 			}
 			if (num1 == num2)
-				return message.reply(getLang("sameNumberMove"));
+				return message.reply(getLang("sameNumberMove", num1));
 
 			// swap
 			[rulesOfThread[num1 - 1], rulesOfThread[num2 - 1]] = [rulesOfThread[num2 - 1], rulesOfThread[num1 - 1]];
