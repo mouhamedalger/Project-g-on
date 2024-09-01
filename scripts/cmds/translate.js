@@ -1,5 +1,5 @@
 const axios = require('axios');
-const defaultEmojiTranslate = "🌐";
+const defaultEmojiTranslate = "✅";
 
 module.exports = {
 	config: {
@@ -28,7 +28,7 @@ module.exports = {
 		en: {
 			translateTo: "🌐 تمت الترجمة من %1 إلى %2",
 			invalidArgument: "إدخال خاطئ، أڪتب:\n.ترجمي تفاعل تشغيل\n.ترجمي تفاعل ايقاف",
-			turnOnTransWhenReaction: `✅ Turn on translate message when reaction, try to react \"${defaultEmojiTranslate}\" to any message to translate it (not support bot message)\n Only translate message after turn on this feature`,
+			turnOnTransWhenReaction: `🌹 تـم تشـغيـل ميـزة تࢪجـمـة\nالࢪسـائـل بمجـࢪد التـفاعـل مـع\nالࢪسـالة بهـذا الايمـوجي [${defaultEmojiTranslate}].\nملاحظة: لا يدعم رسائل البوت`,
 			turnOffTransWhenReaction: "✅ Turn off translate message when reaction",
 			inputEmoji: "🌀 Please react to this message to set that emoji as emoji to translate message",
 			emojiSet: "✅ Emoji to translate message is set to %1"
