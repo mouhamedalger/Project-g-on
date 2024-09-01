@@ -6,11 +6,11 @@ module.exports = {
 		countDown: 5,
 		role: 1,
 		description: {
-			en: "تعمل تاغ للكل"
+			ar: "تعمل تاغ للكل"
 		},
 		category: "box chat",
 		guide: {
-			en: "   {pn} [النص الذي تريد ارفاقه مع التاغ | الامر فقط]"
+			ar: "   {pn} [النص الذي تريد ارفاقه مع التاغ | الامر فقط]"
 		}
 	},
 
