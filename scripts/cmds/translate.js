@@ -16,7 +16,7 @@ module.exports = {
 		guide: {
 			en: "   {pn} <النص>"
 				+ "\n   {pn} <النص> -> <ISO 639-1>: ترجمة النص إلى اللغة المحددة"
-				+ "\n   {pn} <وترد على الرسالة التي تريد ترجمتها>
+				+ "\n   {pn} <وترد على الرسالة التي تريد ترجمتها>"
 				+ "\n   Example:"
 				+ "\n   {pn} hello -> ar"
 				+ "\n   {pn} -r [on | off]: Turn on or off the automatic translation mode when someone reacts to the message"
