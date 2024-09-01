@@ -3,48 +3,31 @@ const defaultEmojiTranslate = "🌐";
 
 module.exports = {
 	config: {
-		name: "translate",
-		aliases: ["trans"],
+		name: "ترجمي",
+		aliases: ["ترجمة"],
 		version: "1.5",
 		author: "NTKhang",
 		countDown: 5,
 		role: 0,
 		description: {
-			vi: "Dịch văn bản sang ngôn ngữ mong muốn",
-			en: "Translate text to the desired language"
+			en: "ترجمة النص الذي تدخله أو الرسالة التي ترد عليها"
 		},
 		category: "utility",
 		guide: {
-			vi: "   {pn} <văn bản>: Dịch văn bản sang ngôn ngữ của box chat bạn hoặc ngôn ngữ mặc định của bot"
-				+ "\n   {pn} <văn bản> -> <ISO 639-1>: Dịch văn bản sang ngôn ngữ mong muốn"
-				+ "\n   hoặc có thể phản hồi 1 tin nhắn để dịch nội dung của tin nhắn đó"
-				+ "\n   Ví dụ:"
-				+ "\n    {pn} hello -> vi"
-				+ "\n   {pn} -r [on | off]: Bật hoặc tắt chế độ tự động dịch tin nhắn khi có người thả cảm xúc vào tin nhắn"
-				+ "\n   {pn} -r set <emoji>: Đặt emoji để dịch tin nhắn trong nhóm chat của bạn",
-			en: "   {pn} <text>: Translate text to the language of your chat box or the default language of the bot"
-				+ "\n   {pn} <text> -> <ISO 639-1>: Translate text to the desired language"
-				+ "\n   or you can reply a message to translate the content of that message"
+			en: "   {pn} <النص>"
+				+ "\n   {pn} <النص> -> <ISO 639-1>: ترجمة النص إلى اللغة المحددة"
+				+ "\n   {pn} <وترد على الرسالة التي تريد ترجمتها>
 				+ "\n   Example:"
-				+ "\n    {pn} hello -> vi"
+				+ "\n   {pn} hello -> ar"
 				+ "\n   {pn} -r [on | off]: Turn on or off the automatic translation mode when someone reacts to the message"
 				+ "\n   {pn} -r set <emoji>: Set the emoji to translate the message in your chat group"
 		}
 	},
 
 	langs: {
-		vi: {
-			translateTo: "🌐 Dịch từ %1 sang %2",
-			invalidArgument: "❌ Sai cú pháp, vui lòng chọn on hoặc off",
-			turnOnTransWhenReaction: `✅ Đã bật tính năng dịch tin nhắn khi thả cảm xúc, thử thả cảm xúc \"${defaultEmojiTranslate}\" vào tin nhắn bắt kỳ để dịch nó (không hỗ trợ tin nhắn của bot)\n Chỉ có thể dịch được những tin nhắn sau khi bật tính năng này`,
-			turnOffTransWhenReaction: "✅ Đã tắt tính năng dịch tin nhắn khi thả cảm xúc",
-			inputEmoji: "🌀 Hãy thả cảm xúc vào tin nhắn này để đặt emoji đó làm emoji dịch tin nhắn",
-			emojiSet: "✅ Đã đặt emoji dịch tin nhắn là %1"
-
-		},
 		en: {
-			translateTo: "🌐 Translate from %1 to %2",
-			invalidArgument: "❌ Invalid argument, please choose on or off",
+			translateTo: "🌐 تمت الترجمة من %1 إلى %2",
+			invalidArgument: "إدخال خاطئ، أڪتب:\n%1ترجمي تفاعل تشغيل\n%1ترجمي تفاعل ايقاف",
 			turnOnTransWhenReaction: `✅ Turn on translate message when reaction, try to react \"${defaultEmojiTranslate}\" to any message to translate it (not support bot message)\n Only translate message after turn on this feature`,
 			turnOffTransWhenReaction: "✅ Turn off translate message when reaction",
 			inputEmoji: "🌀 Please react to this message to set that emoji as emoji to translate message",
@@ -53,8 +36,8 @@ module.exports = {
 	},
 
 	onStart: async function ({ message, event, args, threadsData, getLang, commandName }) {
-		if (["-r", "-react", "-reaction"].includes(args[0])) {
-			if (args[1] == "set") {
+		if (["تفاعل"].includes(args[0])) {
+			if (args[1] == "ضبط") {
 				return message.reply(getLang("inputEmoji"), (err, info) =>
 					global.GoatBot.onReaction.set(info.messageID, {
 						type: "setEmoji",
@@ -64,9 +47,9 @@ module.exports = {
 					})
 				);
 			}
-			const isEnable = args[1] == "on" ? true : args[1] == "off" ? false : null;
+			const isEnable = args[1] == "تشغيل" ? true : args[1] == "ايقاف" ? false : null;
 			if (isEnable == null)
-				return message.reply(getLang("invalidArgument"));
+				return message.reply(getLang("invalidArgument", getPrefix(threadID)));
 			await threadsData.set(event.threadID, isEnable, "data.translate.autoTranslateWhenReaction");
 			return message.reply(isEnable ? getLang("turnOnTransWhenReaction") : getLang("turnOffTransWhenReaction"));
 		}
