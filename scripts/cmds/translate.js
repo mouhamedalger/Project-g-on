@@ -36,7 +36,6 @@ module.exports = {
 	},
 
 	onStart: async function ({ message, event, args, threadsData, getLang, commandName }) {
-		const { threadID, senderID } = event;
 		if (["تفاعل"].includes(args[0])) {
 			if (args[1] == "ضبط") {
 				return message.reply(getLang("inputEmoji"), (err, info) =>
@@ -50,7 +49,7 @@ module.exports = {
 			}
 			const isEnable = args[1] == "تشغيل" ? true : args[1] == "ايقاف" ? false : null;
 			if (isEnable == null)
-				return message.reply(getLang("invalidArgument", getPrefix(threadID)));
+				return message.reply(getLang("invalidArgument", getPrefix));
 			await threadsData.set(event.threadID, isEnable, "data.translate.autoTranslateWhenReaction");
 			return message.reply(isEnable ? getLang("turnOnTransWhenReaction") : getLang("turnOffTransWhenReaction"));
 		}
