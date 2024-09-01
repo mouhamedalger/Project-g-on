@@ -18,12 +18,11 @@ module.exports = {
 		countDown: 5,
 		role: 0,
 		description: {
-			vi: "قائمة الأوامر المتاحة في البوت",
-			en: "قائمة الأوامر المتاحة في البوت"
+			ar: "قائمة الأوامر المتاحة في البوت"
 		},
 		category: "info",
 		guide: {
-			en: "{pn} [empty | <page number> | <command name>]"
+			ar: "{pn} [empty | <page number> | <command name>]"
 				+ "\n   {pn} <اسم الامر> [-u | usage | -g | guide]: only show command usage"
 				+ "\n   {pn} <اسم الامر> [-i | info]: only show command info"
 				+ "\n   {pn} <اسم الامر> [-r | role]: only show command role"
@@ -33,7 +32,7 @@ module.exports = {
 	},
 
 	langs: {
-		en: {
+		ar: {
 			help: "آلَأوُآمِـــــر آلَــمِــثًـــــآحًــــة: %4"
 				+ "\n༺ا-🌹━━━♡━━━🌹-ا༻\n"
 				+ "\n%1"
