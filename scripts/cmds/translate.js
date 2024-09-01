@@ -36,6 +36,7 @@ module.exports = {
 	},
 
 	onStart: async function ({ message, event, args, threadsData, getLang, commandName }) {
+		const { threadID, senderID } = event;
 		if (["تفاعل"].includes(args[0])) {
 			if (args[1] == "ضبط") {
 				return message.reply(getLang("inputEmoji"), (err, info) =>
