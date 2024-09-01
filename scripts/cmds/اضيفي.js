@@ -9,16 +9,16 @@ module.exports = {
 		countDown: 5,
 		role: 1,
 		description: {
-			en: "Add user to box chat of you"
+			ar: "Add user to box chat of you"
 		},
 		category: "box chat",
 		guide: {
-			en: "   {pn} [link profile | uid]"
+			ar: "   {pn} [link profile | uid]"
 		}
 	},
 
 	langs: {
-		en: {
+		ar: {
 			alreadyInGroup: "Already in group",
 			successAdd: "- Successfully added %1 members to the group",
 			failedAdd: "- Failed to add %1 members to the group",
