@@ -5,11 +5,11 @@ module.exports.config = {
 		countDown: 5,
 		role: 0,
 		description: {
-			ar: "ترسل أذكار الصباح، كل ذكر مفصول عن التاني بفاصل زمني"
+			ar: "تذكير بالوقت في كل ساعة"
 		},
 		category: "box chat",
 		guide: {
-			ar: "{pn}"
+			ar: "تعمل أوتوماتيكي، لا تحتاج لكتابة الأمر"
 		}
 	},
 const nam = [
