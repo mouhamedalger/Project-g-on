@@ -25,9 +25,9 @@ module.exports.langs = {
 
 module.exports.onStart = async function({ api, event, args, Currencies, getLang }) {
     const { threadID, messageID, senderID } = event;
-    const { getData, increaseMoney, decreaseMoney } = Currencies;
+    const { usersData, increaseMoney, decreaseMoney } = Currencies;
     const slotItems = ["🍇", "🍉", "🍊", "🍏", "7⃣", "🍓", "🍒", "🍌", "🥝", "🥑", "🌽"];
-    const moneyUser = (await getData(senderID)).money;
+    const moneyUser = await usersData.get(uid, "money");
 
     var moneyBet = parseInt(args[0]);
     if (isNaN(moneyBet) || moneyBet <= 0) return api.sendMessage(getLang("missingInput"), threadID, messageID);
