@@ -29,7 +29,7 @@ module.exports = {
 		role: 0,
 		description: {
 			vi: "Tải video, audio hoặc xem thông tin video trên YouTube",
-			en: "Download video, audio or view video information on YouTube"
+			ar: "Download video, audio or view video information on YouTube"
 		},
 		category: "media",
 		guide: {
@@ -40,7 +40,7 @@ module.exports = {
 				+ "\n    {pn} -v Fallen Kingdom"
 				+ "\n    {pn} -a Fallen Kingdom"
 				+ "\n    {pn} -i Fallen Kingdom",
-			en: "   {pn} [video|-v] [<video name>|<video link>]: use to download video from youtube."
+			ar: "   {pn} [video|-v] [<video name>|<video link>]: use to download video from youtube."
 				+ "\n   {pn} [audio|-a] [<video name>|<video link>]: use to download audio from youtube"
 				+ "\n   {pn} [info|-i] [<video name>|<video link>]: use to view video information from youtube"
 				+ "\n   Example:"
@@ -64,7 +64,7 @@ module.exports = {
 			info: "💠 Tiêu đề: %1\n🏪 Channel: %2\n👨‍👩‍👧‍👦 Subscriber: %3\n⏱ Thời gian video: %4\n👀 Lượt xem: %5\n👍 Lượt thích: %6\n🆙 Ngày tải lên: %7\n🔠 ID: %8\n🔗 Link: %9",
 			listChapter: "\n📖 Danh sách phân đoạn: %1\n"
 		},
-		en: {
+		ar: {
 			error: "❌ An error occurred: %1",
 			noResult: "⭕ No search results match the keyword %1",
 			choose: "%1Reply to the message with a number to choose or any content to cancel",
