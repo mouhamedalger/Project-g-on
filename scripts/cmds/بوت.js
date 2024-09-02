@@ -52,7 +52,7 @@ mentions: __
 }
 module.exports = {
 config: {
- name: "بوت",
+ name: "ai99",
 aliases: [],
 version: 1.6,
 author: "Jun",
