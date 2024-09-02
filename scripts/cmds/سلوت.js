@@ -23,9 +23,9 @@ module.exports.langs = {
 		}
 	},
 
-module.exports.onStart = async function({ api, event, usersData, args, Currencies, getLang }) {
+module.exports.onStart = async function({ api, event, args, Currencies, getLang }) {
     const { threadID, messageID, senderID } = event;
-    const { increaseMoney, decreaseMoney } = Currencies;
+    const { usersData, increaseMoney, decreaseMoney } = Currencies;
     const slotItems = ["🍇", "🍉", "🍊", "🍏", "7⃣", "🍓", "🍒", "🍌", "🥝", "🥑", "🌽"];
     const moneyUser = await usersData.get(uid, "money");
 
