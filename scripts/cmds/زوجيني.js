@@ -1,5 +1,5 @@
 module.exports.config = {
-		name: "اذكارالصباح",
+		name: "زوجيني",
 		version: "1.4",
 		author: "محمد تانجيرو",
 		countDown: 5,
