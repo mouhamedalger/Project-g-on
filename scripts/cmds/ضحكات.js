@@ -1,6 +1,6 @@
 const fs = require("fs");
 module.exports.config = {
-    name: "ضحكات",
+                name: "ضحكات",
 		version: "1.3",
 		author: "محمد تانجيرو",
 		countDown: 5,
