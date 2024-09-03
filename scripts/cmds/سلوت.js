@@ -23,9 +23,8 @@ module.exports.langs = {
 		}
 	},
 
-module.exports.onStart = async function({ api, event, args, Currencies, getLang }) {
+module.exports.onStart = async function({ api, event, message, envCommands, commandName, usersData, args, getLang }) {
     const { threadID, messageID, senderID } = event;
-    const { usersData, increaseMoney, decreaseMoney } = Currencies;
     const slotItems = ["🍇", "🍉", "🍊", "🍏", "7⃣", "🍓", "🍒", "🍌", "🥝", "🥑", "🌽"];
     const moneyUser = await usersData.get(uid, "money");
 
@@ -46,12 +45,18 @@ module.exports.onStart = async function({ api, event, args, Currencies, getLang 
     switch (win) {
         case true: {
             api.sendMessage(getLang("returnWin", slotItems[number[0]], slotItems[number[1]], slotItems[number[2]], moneyBet), threadID, messageID);
-            await increaseMoney(senderID, moneyBet);
+            await usersData.set(senderID, {
+			money: userData.money + moneyBet,
+			data: userData.data
+		});
             break;
         }
         case false: {
             api.sendMessage(getLang("returnLose", slotItems[number[0]], slotItems[number[1]], slotItems[number[2]], moneyBet), threadID, messageID);
-            await decreaseMoney(senderID, moneyBet);
+            await usersData.set(senderID, {
+			money: userData.money - moneyBet,
+			data: userData.data
+		});;
             break;
         }
     }
