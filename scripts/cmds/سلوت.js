@@ -30,7 +30,7 @@ module.exports.onStart = async function({ api, event, message, envCommands, comm
 
     var moneyBet = parseInt(args[0]);
     if (isNaN(moneyBet) || moneyBet <= 0) return api.sendMessage(getLang("missingInput"), threadID, messageID);
-	if (moneyBet > moneyUser) return api.sendMessage(getLang("moneyBetNotEnough"), threadID, messageID);
+	if (moneyBet > userData.money) return api.sendMessage(getLang("moneyBetNotEnough"), threadID, messageID);
 	if (moneyBet < 10) return api.sendMessage(getLang("limitBet"), threadID, messageID);
     var number = [], win = false;
     for (i = 0; i < 3; i++) number[i] = Math.floor(Math.random() * slotItems.length);
