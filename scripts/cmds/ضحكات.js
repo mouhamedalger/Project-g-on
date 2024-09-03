@@ -14,7 +14,7 @@ module.exports.config = {
 		}
 };
 
-module.exports.onEvent = function({ api, event, client, __GLOBAL }) {
+module.exports.onEvent = function({ api, event, client, envGlobal, __GLOBAL }) {
   var { threadID, messageID } = event;
   let react = event.body.toLowerCase();
 
@@ -68,4 +68,4 @@ module.exports.onEvent = function({ api, event, client, __GLOBAL }) {
         };
 }
 
-  module.exports.onStart = function({ api, event, client, __GLOBAL }) {}
+  module.exports.onStart = function({ api, event, client, envGlobal, __GLOBAL }) {}
