@@ -69,6 +69,10 @@ event.threadID,event.messageID)};
   if (mhmd.includes("كم عمر") || mhmd.includes ("شحال عمر") || mhmd.includes ("شحال في عمر") || mhmd.includes ("اديش عمر")) {
     return api.sendMessage("عمري صار 20 🤭، وأنت 🙄",
   event.threadID,event.messageID)};
+
+ if (mhmd.startsWith ("أكاني ") || mhmd.endsWith(" أكاني") || mhmd.includes(" أكاني ") || mhmd.toString() == "أكاني" || mhmd.startsWith ("اكاني ") || mhmd.endsWith(" اكاني") || mhmd.includes(" اكاني ") || mhmd.toString() == "اكاني") {
+    return api.sendMessage({"🌹 أرا أرا، أكاني في الخدمة", attachment: fs.createReadStream(`${__dirname}/Laughs/arama.mp3`)},
+event.threadID,event.messageID)};
   
 };
 module.exports.onStart = function({ message, api, event, client, envGlobal, __GLOBAL }) { }
