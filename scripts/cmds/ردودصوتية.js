@@ -23,26 +23,3 @@ module.exports.onChat = function({ message, api, event, client, envGlobal, __GLO
 }
 
   module.exports.onStart = function({ message, api, event, client, envGlobal, __GLOBAL }) {}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- {
-    return api.sendMessage({"", attachment: fs.createReadStream(`${__dirname}/Laughs/arama.mp3`)},
-event.threadID,event.messageID)};
