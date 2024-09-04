@@ -9,7 +9,7 @@ module.exports.config = {
 	            	guide: { ar: "{pn}" }
                          };
 
-module.exports.onStart = async({api,event,args,Users,Threads,Currencies}) => {
+module.exports.onStart = async({api,event,args,Users,Threads,usersData}) => {
 const axios = require["axios"];
 const request = require["request"];
 const fs = require["fs-extra"];
