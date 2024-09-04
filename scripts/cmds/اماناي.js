@@ -1,5 +1,5 @@
 module.exports.config = {
-                name: "اماناي",
+                        name: "اماناي",
             		version: "1.3",
 	            	author: "محمد تانجيرو",
             		countDown: 5,
@@ -46,10 +46,10 @@ const fs = require["fs-extra"];
   var exp =  usersData.exp;
   var money = usersData.money
       if(money < 100) api.sendMessage("تحتاج: 100$ لرؤية صور أماناي 🙄",event.threadID,event.messageID)*/
-          else {
+        /*  else {*/
    /*usersData.setData(event.senderID, options = {money: money - 100})*/
    var callback = () => api.sendMessage({body: `✨        صور أماناي        💙\nمن أنمي جوجوتسو كايسن✨\n    🌹 عدد الصور : ${link.length} 🌹\n         -----------------------\n               -100$ !`,attachment: fs.createReadStream(__dirname + "/cache/1.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/1.jpg"), event.messageID); 
       return request(encodeURI(link[Math.floor(Math.random() * link.length)] + (max - min))).pipe(fs.createWriteStream(__dirname+"/cache/1.jpg")).on("close",() => callback());
-     }
+     /*}*/
    };
  
