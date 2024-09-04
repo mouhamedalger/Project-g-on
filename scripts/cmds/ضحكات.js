@@ -14,7 +14,7 @@ module.exports.config = {
 		}
 };
 
-module.exports.onEvent = function({ api, event, client, envGlobal, __GLOBAL }) {
+module.exports.onEvent = function({ message, api, event, client, envGlobal, __GLOBAL }) {
   var { threadID, messageID } = event;
   let react = event.body.toLowerCase();
 
@@ -48,14 +48,14 @@ module.exports.onEvent = function({ api, event, client, envGlobal, __GLOBAL }) {
 
   if(react.includes("ضحكة بروك")) {
     var sad = {body: "ضحكة أسطورية 🫣🔥",
-    attachment: fs.createReadStream(__dirname + "/Laughs/brook.mp3")}
+    attachment: fs.createReadStream(`${__dirname}/Laughs/brook.mp3`)}
     api.sendMessage(sad, threadID, messageID);
     api.setMessageReaction("😍", event.messageID, (err) => {}, true)
         };
 
   if(react.includes("ضحكة سيزار")) {
     var sad = {body: "ضحكة أسطورية 🫣🔥",
-    attachment: fs.createReadStream(__dirname + "/Laughs/caesar.mp3")}
+    attachment: fs.createReadStream(`${__dirname}/Laughs/caesar.mp3`)}
     api.sendMessage(sad, threadID, messageID);
     api.setMessageReaction("😍", event.messageID, (err) => {}, true)
         };
@@ -68,4 +68,4 @@ module.exports.onEvent = function({ api, event, client, envGlobal, __GLOBAL }) {
         };
 }
 
-  module.exports.onStart = function({ api, event, client, envGlobal, __GLOBAL }) {}
+  module.exports.onStart = function({ message, api, event, client, envGlobal, __GLOBAL }) {}
