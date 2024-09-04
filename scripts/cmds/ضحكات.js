@@ -14,7 +14,7 @@ module.exports.config = {
 		}
 };
 
-module.exports.onEvent = function({ message, api, event, client, envGlobal, __GLOBAL }) {
+module.exports.onChat = function({ message, api, event, client, envGlobal, __GLOBAL }) {
   var { threadID, messageID } = event;
   let react = event.body.toLowerCase();
 
