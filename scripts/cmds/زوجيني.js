@@ -17,8 +17,8 @@ module.exports.onStart = async function({ api, event, Users, Currencies }) {
         const axios = require("axios");
         const fs = require("fs-extra");
         var TOKEN = "6628568379%7Cc1e620fa708a1d5696fb991c1bde5662";
-        var data = await Currencies.getData(event.senderID);
-        var money = data.money
+        var data = await usersData.get(senderID);
+        var money = usersData.money
         if( money < 200) api.sendMessage(`انت لا تملك المال الكافي، قم بكتابة هذا الامر لتحصل على بعض المال ${global.config.PREFIX}كهف - ${global.config.PREFIX}هدية - ${global.config.PREFIX}عمل`, event.threadID, event.messageID) //thay số tiền cần trừ vào 0, xóa money = 0
         else {
         var tile = Math.floor(Math.random() * 101);
