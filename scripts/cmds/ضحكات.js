@@ -7,7 +7,7 @@ module.exports.config = {
 		role: 0,
 		description: { ar: "ترسل ضحكات بعض الشخصيات الأسطورية" },
 		category: "no prefix",
-		guide: { ar: "{pn} [اسم الشخصية]" }
+		guide: { ar: "ضحكة [اسم الشخصية]، لا تحتاج للبادئة (.)" }
                          };
 
 module.exports.onChat = function({ message, api, event, client, envGlobal, __GLOBAL }) {
