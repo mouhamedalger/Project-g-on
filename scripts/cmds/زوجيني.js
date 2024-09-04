@@ -29,14 +29,14 @@ module.exports.onStart = async function({ api, event, usersData }) {
         var emoji = event.participantIDs;
         var id = emoji[Math.floor(Math.random() * emoji.length)];
 
-        var namee = (await Users.getData(event.senderID)).name;
-        var name = (await Users.getData(id)).name;
+        var namee = (await usersData.get(event.senderID)).name;
+        var name = (await usersData.get(id)).name;
 
         var arraytag = [];
         arraytag.push({id: event.senderID, tag: namee});
         arraytag.push({id: id, tag: name});
       
-        Currencies.setData(event.senderID, options = {money: money - 200})
+        usersData.set(event.senderID, options = {money: money - 200})
   
         let Avatar = (await axios.get( `https://graph.facebook.com/${id}/picture?height=720&width=720&access_token=${TOKEN}`, { responseType: "arraybuffer" } )).data; 
             fs.writeFileSync( __dirname + "/cache/1.png", Buffer.from(Avatar, "utf-8") );
