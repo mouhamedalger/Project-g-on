@@ -1,6 +1,6 @@
 const fs = require("fs");
 module.exports.config = {
-                name: "ردود_مباشرة",
+                name: "ردودمباشرة",
             		version: "1.3",
             		author: "محمد تانجيرو",
             		countDown: 5,
@@ -69,10 +69,6 @@ event.threadID,event.messageID)};
   if (mhmd.includes("كم عمر") || mhmd.includes ("شحال عمر") || mhmd.includes ("شحال في عمر") || mhmd.includes ("اديش عمر")) {
     return api.sendMessage("عمري صار 20 🤭، وأنت 🙄",
   event.threadID,event.messageID)};
-
- if (mhmd.startsWith ("أكاني ") || mhmd.endsWith(" أكاني") || mhmd.includes(" أكاني ") || mhmd.toString() == "أكاني" || mhmd.startsWith ("اكاني ") || mhmd.endsWith(" اكاني") || mhmd.includes(" اكاني ") || mhmd.toString() == "اكاني") {
-    return api.sendMessage("أمممم ... الأمر محرج 🤭\nدعني أفكر في الأمر 🙄", attachment: fs.createReadStream(`${__dirname}/Laughs/ara ara.mp3`),
-event.threadID,event.messageID)};
   
 };
 module.exports.onStart = function({ message, api, event, client, envGlobal, __GLOBAL }) { }
