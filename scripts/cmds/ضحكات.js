@@ -5,65 +5,61 @@ module.exports.config = {
 		author: "محمد تانجيرو",
 		countDown: 5,
 		role: 0,
-		description: {
-			ar: "ترسل ضحكات بعض الشخصيات الأسطورية"
-		},
+		description: { ar: "ترسل ضحكات بعض الشخصيات الأسطورية" },
 		category: "no prefix",
-		guide: {
-			ar: "   {pn} [اسم الشخصية]"
-		}
-};
+		guide: { ar: "{pn} [اسم الشخصية]" }
+                         };
 
 module.exports.onChat = function({ message, api, event, client, envGlobal, __GLOBAL }) {
   var { threadID, messageID } = event;
-  let react = event.body.toLowerCase();
+  let mhmd = event.body;
 
-  if(react.includes("ضحكة لايت") || react.includes("ضحكة كيرا")) {
-    var sad = {body: "ضحكة أسطورية 🫣🔥",
-    attachment: fs.createReadStream(__dirname + "/Laughs/kira.mp3")}
-    api.sendMessage(sad, threadID, messageID);
+  if(mhmd.includes("ضحكة لايت") || mhmd.includes("ضحكة كيرا")) {
+    var legendary = {body: "ضحكة أسطورية 🫣🔥",
+    attachment: fs.createReadStream(`${__dirname}/Laughs/kira.mp3`)}
+    api.sendMessage(legendary, threadID, messageID);
     api.setMessageReaction("😍", event.messageID, (err) => {}, true)
         };
   
-  if(react.includes("ضحكة دوفلامينغو") || react.includes("ضحكة دوفي")) {
-    var sad = {body: "ضحكة أسطورية 🫣🔥",
-    attachment: fs.createReadStream(__dirname + "/Laughs/dofi.mp3")}
-    api.sendMessage(sad, threadID, messageID);
+  if(mhmd.includes("ضحكة دوفلامينغو") || mhmd.includes("ضحكة دوفي")) {
+    var legendary = {body: "ضحكة أسطورية 🫣🔥",
+    attachment: fs.createReadStream(`${__dirname}/Laughs/dofi.mp3`)}
+    api.sendMessage(legendary, threadID, messageID);
     api.setMessageReaction("😍", event.messageID, (err) => {}, true)
         };
 
-  if(react.includes("ضحكة تيتش") || react.includes("ضحكة اللحية السوداء")) {
-    var sad = {body: "ضحكة أسطورية 🫣🔥",
-    attachment: fs.createReadStream(__dirname + "/Laughs/titch.mp3")}
-    api.sendMessage(sad, threadID, messageID);
+  if(mhmd.includes("ضحكة تيتش") || mhmd.includes("ضحكة اللحية السوداء")) {
+    var legendary = {body: "ضحكة أسطورية 🫣🔥",
+    attachment: fs.createReadStream(`${__dirname}/Laughs/titch.mp3`)}
+    api.sendMessage(legendary, threadID, messageID);
     api.setMessageReaction("😍", event.messageID, (err) => {}, true)
         };
   
-  if(react.includes("ضحكة كروكودايل") || react.includes("ضحكة كروكو")) {
-    var sad = {body: "ضحكة أسطورية 🫣🔥",
-    attachment: fs.createReadStream(__dirname + "/Laughs/croco.mp3")}
-    api.sendMessage(sad, threadID, messageID);
+  if(mhmd.includes("ضحكة كروكودايل") || mhmd.includes("ضحكة كروكو")) {
+    var legendary = {body: "ضحكة أسطورية 🫣🔥",
+    attachment: fs.createReadStream(`${__dirname}/Laughs/croco.mp3`)}
+    api.sendMessage(legendary, threadID, messageID);
     api.setMessageReaction("😍", event.messageID, (err) => {}, true)
         };
 
-  if(react.includes("ضحكة بروك")) {
-    var sad = {body: "ضحكة أسطورية 🫣🔥",
+  if(mhmd.includes("ضحكة بروك")) {
+    var legendary = {body: "ضحكة أسطورية 🫣🔥",
     attachment: fs.createReadStream(`${__dirname}/Laughs/brook.mp3`)}
-    api.sendMessage(sad, threadID, messageID);
+    api.sendMessage(legendary, threadID, messageID);
     api.setMessageReaction("😍", event.messageID, (err) => {}, true)
         };
 
-  if(react.includes("ضحكة سيزار")) {
-    var sad = {body: "ضحكة أسطورية 🫣🔥",
+  if(mhmd.includes("ضحكة سيزار")) {
+    var legendary = {body: "ضحكة أسطورية 🫣🔥",
     attachment: fs.createReadStream(`${__dirname}/Laughs/caesar.mp3`)}
-    api.sendMessage(sad, threadID, messageID);
+    api.sendMessage(legendary, threadID, messageID);
     api.setMessageReaction("😍", event.messageID, (err) => {}, true)
         };
 
-  if(react.includes("ضحكة مادارا")) {
-    var sad = {body: "ضحكة أسطورية 🫣🔥",
-    attachment: fs.createReadStream(__dirname + "/Laughs/madara.mp3")}
-    api.sendMessage(sad, threadID, messageID);
+  if(mhmd.includes("ضحكة مادارا")) {
+    var legendary = {body: "ضحكة أسطورية 🫣🔥",
+    attachment: fs.createReadStream(`${__dirname}/Laughs/madara.mp3`)}
+    api.sendMessage(legendary, threadID, messageID);
     api.setMessageReaction("😍", event.messageID, (err) => {}, true)
         };
 }
