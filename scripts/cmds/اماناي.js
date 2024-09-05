@@ -50,6 +50,6 @@ const fs = require["fs-extra"];
           else {
    usersData.set(senderID, options = {money: money - 100})
    var callback = () => api.sendMessage({body: `✨        صور أماناي        💙\nمن أنمي جوجوتسو كايسن✨\n    🌹 عدد الصور : ${link.length} 🌹\n         -----------------------\n               -100$ !`,attachment: fs.createReadStream(__dirname + "/cache/1.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/1.jpg"), event.messageID); 
-      return async(encodeURI(link[Math.floor(Math.random() * link.length)] + (max - min))).pipe(fs.createWriteStream(__dirname+"/cache/1.jpg")).on("close",() => callback());
+      return await(encodeURI(link[Math.floor(Math.random() * link.length)] + (max - min))).pipe(fs.createWriteStream(__dirname+"/cache/1.jpg")).on("close",() => callback());
      }
    };
