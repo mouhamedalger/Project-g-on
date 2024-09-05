@@ -37,7 +37,7 @@ const questions = [
 { question: "حامل ومحمول، نصفه جاف ونصفه مبلول؟", answer: "السفينة" },
 ];
 
-module.exports.onFirstChat = async function ({ api, event, message, handleReply, Currencies }) {
+module.exports.onChat = async function ({ api, event, message, handleReply, Currencies }) {
     const userAnswer = event.body.trim().toLowerCase();
     const correctAnswer = handleReply.correctAnswer.toLowerCase();
     const userName = global.data.userName.get(event.senderID) || await Users.getNameUser(event.senderID);
