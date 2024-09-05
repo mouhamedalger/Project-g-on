@@ -11,22 +11,41 @@ module.exports.config = {
 
 const fs = require('fs');
 const axios = require('axios');
-/*const tempImageFilePath = __dirname + "/cache/tempImage.jpg";*/
 
 module.exports.onStart = async function ({ api, event, args }) {
-    const questions = [
-      { image: "https://i.pinimg.com/originals/6f/a0/39/6fa0398e640e5545d94106c2c42d2ff8.jpg"/*, answer: "العراق"*/ },
-      { image: "https://i.pinimg.com/originals/2d/a2/6e/2da26e58efd5f32fe2e33b9654907ab5.gif"}
+    const pictures = [
+      { /*image:*/ "https://i.imgur.com/cuMzlKg.jpg"},
+      { /*image:*/ "https://i.imgur.com/2f52Onh.jpg"},
+      { /*image:*/ "https://i.imgur.com/B9zE4DA.jpg"},
+      { /*image:*/ "https://i.imgur.com/EZa7R9C.jpg"},
+      { /*image:*/ "https://i.imgur.com/j5FfpWE.jpg"},
+      { /*image:*/ "https://i.imgur.com/Wd3456M.jpg"},
+/*      { image: ""},
+      { image: ""},
+      { image: ""},
+      { image: ""},
+      { image: ""},
+      { image: ""},
+      { image: ""},
+      { image: ""},
+      { image: ""},
+      { image: ""},
+      { image: ""},
+      { image: ""},
+      { image: ""},
+      { image: ""},
+      { image: ""},
+      { image: ""},
+      { image: ""},
+      { image: ""},
+      { image: ""},*/    
     ];
 
-    const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
-    /*const correctAnswer = randomQuestion.answer;*/
+    const randomimage = pictures[Math.floor(Math.random() * pictures.length)];
+    const image = await axios.get(randomimage/*.image*/, { responseType: "arraybuffer" });
+    fs.writeFileSync(__dirname + "/cache/amanai.jpg", Buffer.from(image.data, "binary"));
 
-    const imageResponse = await axios.get(randomQuestion.image, { responseType: "arraybuffer" });
-    fs.writeFileSync(__dirname + "/cache/tempImage.jpg", Buffer.from(imageResponse.data, "binary"));
-
-    const attachment = [fs.createReadStream(__dirname + "/cache/tempImage.jpg")];
+    const attachment = [fs.createReadStream(__dirname + "/cache/amanai.jpg")];
     const message = `✨ لأي دولة ينتمي هذا العلم؟ ✨`;
-
     api.sendMessage({ body: message, attachment }, event.threadID, event.messageID);
 };
