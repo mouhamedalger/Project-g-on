@@ -30,14 +30,14 @@ module.exports = function ({ api, models, Users, Threads, threadsData, usersData
                 Obj.models = models
                 Obj.Users = Users
                 Obj.Threads = Threads 
-                Obj.Currencies = Currencies
+                Obj.usersData = usersData
                 Obj.handleReply = indexOfMessage
                 Obj.models = models
-                Obj.getText = getText2
+                Obj.getlang = getText2
                 handleNeedExec.handleReply(Obj);
                 return;
             } catch (error) {
-                return api.sendMessage(global.getText('handleReply', 'executeError', error), threadID, messageID);
+                return api.sendMessage(global.getlang('handleReply', 'executeError', error), threadID, messageID);
             }
         }
     };
