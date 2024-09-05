@@ -1,117 +1,64 @@
 const axios = require('axios');
 
-
-
 module.exports = {
+    config: {
+        name: "waifu",
+        aliases: ["wife"],
+        version: "1.1",
+        author: "cid kageno",
+        countDown: 0,
+        role: 0,
+        shortDescription: "Get random waifu",
+        longDescription: "Get waifu images based on various categories.",
+        category: "anime",
+        guide: "{pn} {{<name>}}"
+    },
 
-	config: {
+    onStart: async function({ message, args }) {
+        const categories = [
+            'waifu', 'neko', 'shinobu', 'megumin', 'bully', 'cuddle', 'cry', 'kiss', 'lick', 'hug',
+            'awoo', 'pat', 'smug', 'bonk', 'yeet', 'blush', 'smile', 'wave', 'highfive', 'handhold',
+            'nom', 'bite', 'glomp', 'slap', 'kill', 'kick', 'happy', 'wink', 'poke', 'dance', 'cringe'
+        ];
 
-		name: "waifu",
+        const name = args.join(" ");
 
-		aliases: ["wife"],
+        if (!name) {
+            try {
+                let res = await axios.get('https://api.waifu.pics/sfw/waifu'); // Exemple pour Waifu.pics
+                let img = res.data.url;
 
-		version: "1.0",
+                const form = {
+                    body: `『🍑🍆𝐖𝐀𝐈𝐅𝐔🍆🍑』`
+                };
 
-		author: "Unknown | Fahim_Noob", //Api Modifide by Fahim_Noob & cid kageno 
+                if (img) {
+                    form.attachment = await global.utils.getStreamFromURL(img);
+                }
 
-		countDown: 0,
+                message.reply(form);
+            } catch (e) {
+                message.reply('Erreur lors de la récupération de l\'image.');
+            }
+        } else if (categories.includes(name)) {
+            try {
+                let res = await axios.get(`https://api.waifu.pics/sfw/${name}`); // Exemple pour Waifu.pics
+                let img = res.data.url;
 
-		role: 0,
+                const form = {
+                    body: `『🍑🍆𝐖𝐀𝐈𝐅𝐔🍆🍑』`
+                };
 
-		shortDescription: "get random waifu",
+                if (img) {
+                    form.attachment = await global.utils.getStreamFromURL(img);
+                }
 
-		longDescription: "Get waifu neko: waifu, neko, shinobu, megumin, bully, cuddle, cry, kiss, lick, hug, awoo, pat, smug, bonk, yeet, blush, smile, wave, highfive, handhold, nom, bite, glomp, slap, kill, kick, happy, wink, poke, dance, cringe",
-
-		category: "anime",
-
-		guide: "{pn} {{<name>}}"
-
-	},
-
-
-
-	onStart: async function ({ message, args }) {
-
-		const categories = [
-
-			'waifu', 'neko', 'shinobu', 'megumin', 'bully', 'cuddle', 'cry', 'kiss', 'lick', 'hug',
-
-			'awoo', 'pat', 'smug', 'bonk', 'yeet', 'blush', 'smile', 'wave', 'highfive', 'handhold',
-
-			'nom', 'bite', 'glomp', 'slap', 'kill', 'kick', 'happy', 'wink', 'poke', 'dance', 'cringe'
-
-		];
-
-		const name = args.join(" ");
-
-		
-
-		if (!name) {
-
-			try {
-
-				let res = await axios.get('https://smfahim.onrender.com/fetch/waifu');
-
-				let res2 = res.data;
-
-				let img = res2.url;
-
-
-
-				const form = {
-
-					body: `   「 𝔀𝓪𝓲𝓯𝓾 」   `
-
-				};
-
-				if (img)
-
-					form.attachment = await global.utils.getStreamFromURL(img);
-
-				message.reply(form);
-
-			} catch (e) {
-
-				message.reply('Not Found');
-
-			}
-
-		} else if (categories.includes(name)) {
-
-			try {
-
-				let res = await axios.get(`https://smfahim.onrender.com/fetch/waifu/${name}`);
-
-				let res2 = res.data;
-
-				let img1 = res2.url;
-
-
-
-				const form = {
-
-					body: `   「 𝔀𝓪𝓲𝓯𝓾 」   `
-
-				};
-
-				if (img1)
-
-					form.attachment = await global.utils.getStreamFromURL(img1);
-
-				message.reply(form);
-
-			} catch (e) {
-
-				message.reply('Not Found');
-
-			}
-
-		} else {
-
-			message.reply('No waifu category: waifu, neko, shinobu, megumin, bully, cuddle, cry, kiss, lick, hug, awoo, pat, smug, bonk, yeet, blush, smile, wave, highfive, handhold, nom, bite, glomp, slap, kill, kick, happy, wink, poke, dance, cringe');
-
-		}
-
-	}
-
+                message.reply(form);
+            } catch (e) {
+                message.reply('Erreur lors de la récupération de l\'image.');
+            }
+        } else {
+            message.reply('Catégorie waifu non trouvée : waifu, neko, shinobu, megumin, bully, cuddle, cry, kiss, lick, hug, awoo, pat, smug, bonk, yeet, blush, smile, wave, highfive, handhold, nom, bite, glomp, slap, kill, kick, happy, wink, poke, dance, cringe');
+        }
+    }
 }
