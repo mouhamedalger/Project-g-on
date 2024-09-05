@@ -13,7 +13,7 @@ const fs = require('fs');
 const axios = require('axios');
 const tempImageFilePath = __dirname + "/cache/tempImage.jpg";
 
-module.exports.onReply = async function ({ api, event, handleReply, Currencies }) {
+module.exports.onReply = async function ({ api, event, onReply, Currencies }) {
     const userAnswer = event.body.trim().toLowerCase();
     const correctAnswer = handleReply.correctAnswer.toLowerCase();
     const userName = global.data.userName.get(event.senderID) || await Users.getNameUser(event.senderID);
@@ -22,7 +22,7 @@ module.exports.onReply = async function ({ api, event, handleReply, Currencies }
         Currencies.increaseMoney(event.senderID, 100);
         api.sendMessage(`🎊 تهانينا: ${userName} \n💙--- إجابتك صحيحة ---💙\n ༺ا-🌹-━━♡━━-🌹-ا༻\n    لقد حصلت على 100 $!`, event.threadID);
 
-        api.unsendMessage(handleReply.messageID);
+        api.unsendMessage(onReply.messageID);
     } else {
         api.sendMessage(`✨ خطأ، حاول مرة أخرى 🙄`, event.threadID,event.messageID);
     }
@@ -162,7 +162,7 @@ module.exports.onStart = async function ({ api, event, args }) {
 
     api.sendMessage({ body: message, attachment }, event.threadID, (error, info) => {
         if (!error) {
-            global.client.handleReply.push({
+            global.client.onReply.push({
                 name: this.config.name,
                 messageID: info.messageID,
                 correctAnswer: correctAnswer
