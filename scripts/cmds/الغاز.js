@@ -1,12 +1,12 @@
 module.exports.config = {
                 name: "الغاز",
-	            	version: "1.3",
-	            	author: "محمد تانجيرو",
-            		countDown: 5,
-	            	role: 0,
-	            	description: { ar: "ترسل ضحكات بعض الشخصيات الأسطورية" },
-	            	category: "games",
-            		guide: { ar: "{pn}" }
+		version: "1.3",
+            	author: "محمد تانجيرو",
+            	countDown: 5,
+	    	role: 0,
+            	description: { ar: "ترسل ضحكات بعض الشخصيات الأسطورية" },
+	    	category: "games",
+    		guide: { ar: "{pn}" }
                          };
 
 const questions = [
@@ -37,21 +37,21 @@ const questions = [
 { question: "حامل ومحمول، نصفه جاف ونصفه مبلول؟", answer: "السفينة" },
 ];
 
-module.exports.messageReply = async function ({ api, event, message, messageReply, usersData }) {
+module.exports.onFirstChat = async function ({ api, event, message, handleReply, Currencies }) {
     const userAnswer = event.body.trim().toLowerCase();
-    const correctAnswer = messageReply.correctAnswer.toLowerCase();
+    const correctAnswer = handleReply.correctAnswer.toLowerCase();
     const userName = global.data.userName.get(event.senderID) || await Users.getNameUser(event.senderID);
 
     if (userAnswer === correctAnswer) {
         Currencies.increaseMoney(event.senderID, 100);
         api.sendMessage(`🎊 تهانينا: ${userName} \n💙--- إجابتك صحيحة ---💙\n ༺ا-🌹-━━♡━━-🌹-ا༻\n    لقد حصلت على 100 $!`, event.threadID);
-        api.unsendMessage(messageReply.messageID); 
+        api.unsendMessage(handleReply.messageID); 
     } else {
         api.sendMessage(`✨ خطأ، حاول مرة أخرى 🙄`, event.threadID,event.messageID);
     }
 };
 
-module.exports.onStart = async function ({ api, event, args }) {
+module.exports.run = async function ({ api, event, args }) {
     const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
     const correctAnswer = randomQuestion.answer;
     const question = randomQuestion.question;
@@ -60,7 +60,7 @@ module.exports.onStart = async function ({ api, event, args }) {
 
     api.sendMessage({ body: message }, event.threadID, (error, info) => {
         if (!error) {
-            global.client.messageReply.push({
+            global.client.handleReply.push({
                 name: this.config.name,
                 messageID: info.messageID,
                 correctAnswer: correctAnswer
