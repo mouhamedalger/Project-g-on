@@ -51,7 +51,7 @@ module.exports.onChat = async function ({ api, event, message, handleReply, Curr
     }
 };
 
-module.exports.run = async function ({ api, event, args }) {
+module.exports.onStart = async function ({ api, event, args }) {
     const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
     const correctAnswer = randomQuestion.answer;
     const question = randomQuestion.question;
