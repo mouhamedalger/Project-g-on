@@ -37,7 +37,7 @@ const questions = [
 { question: "حامل ومحمول، نصفه جاف ونصفه مبلول؟", answer: "السفينة" },
 ];
 
-module.exports.handleReply = async function ({ api, event, message, handleReply, Currencies }) {
+/*module.exports.handleReply = async function ({ api, event, message, handleReply, Currencies }) {
     const userAnswer = event.body.trim().toLowerCase();
     const correctAnswer = handleReply.correctAnswer.toLowerCase();
     const userName = global.data.userName.get(event.senderID) || await Users.getNameUser(event.senderID);
@@ -49,7 +49,7 @@ module.exports.handleReply = async function ({ api, event, message, handleReply,
     } else {
         api.sendMessage(`✨ خطأ، حاول مرة أخرى 🙄`, event.threadID,event.messageID);
     }
-};
+};*/
 
 module.exports.onStart = async function ({ api, event, args }) {
     const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
