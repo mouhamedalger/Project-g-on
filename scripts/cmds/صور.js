@@ -14,8 +14,8 @@ module.exports.onStart = async function({ api, event, args }) {
     const fs = require("fs-extra");
     const request = require("request");
     const name = args.join(" ").trim().replace(/\s+/g, " ").replace(/(\s+\|)/g, "|").replace(/\|\s+/g, "|").split("-")[0];
-    const number = args.join(" ").trim().replace(/\s+/g, " ").replace(/(\s+\|)/g, "|").replace(/\|\s+/g, "|").split("-")[1] || 18;
-    if(!name || !number ){ return api.sendMessage("Missing Data", event.threadID)}
+    const number = args.join(" ").trim().replace(/\s+/g, " ").replace(/(\s+\|)/g, "|").replace(/\|\s+/g, "|").split("-")[1] || 9;
+    if(!name /*|| !number*/ ){ return api.sendMessage("Missing Data", event.threadID)}
     var headers = {
         'authority': 'www.pinterest.com',
         'cache-control': 'max-age=0',
