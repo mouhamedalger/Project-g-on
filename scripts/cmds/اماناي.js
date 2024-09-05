@@ -5,14 +5,14 @@ module.exports.config = {
             		countDown: 5,
             		role: 0,
             		description: { ar: "إرسال صور أماناي من أنمي جوجوتسو كايسن" },
-            		category: "no prefix",
+            		category: "pictures",
 	            	guide: { ar: "{pn}" }
                          };
 
-module.exports.onStart = async({api, event, args, Users, Threads, message, usersData}) => {
-const axios = require["axios"];
-const request = require["request"];
-const fs = require["fs-extra"];
+module.exports.onStart = async({api,event,args,Threads,usersData}) => {
+const axios = global.nodemodule["axios"];
+const request = global.nodemodule["request"];
+const fs = global.nodemodule["fs-extra"];
   var link = [
      "https://i.imgur.com/cuMzlKg.jpg",
      "https://i.imgur.com/2f52Onh.jpg",
@@ -42,14 +42,14 @@ const fs = require["fs-extra"];
   ];
   var max = Math.floor(Math.random() * 6);  
   var min = Math.floor(Math.random() * 2);
-  /*var data = await usersData.get(senderID);
+  const { senderID } = event;
+  var data = await usersData.get(senderID);
   var exp =  usersData.exp;
   var money = usersData.money
-      if(money < 100) api.sendMessage("تحتاج: 100$ لرؤية صور أماناي 🙄",event.threadID,event.messageID)*/
-         else {
-   usersData.setData(event.senderID, options = {money: money - 100})
+      if(money < 100) api.sendMessage("تحتاج: 100$ لرؤية صور أماناي 🙄",event.threadID,event.messageID)
+          else {
+   usersData.set(senderID, options = {money: money - 100})
    var callback = () => api.sendMessage({body: `✨        صور أماناي        💙\nمن أنمي جوجوتسو كايسن✨\n    🌹 عدد الصور : ${link.length} 🌹\n         -----------------------\n               -100$ !`,attachment: fs.createReadStream(__dirname + "/cache/1.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/1.jpg"), event.messageID); 
       return request(encodeURI(link[Math.floor(Math.random() * link.length)] + (max - min))).pipe(fs.createWriteStream(__dirname+"/cache/1.jpg")).on("close",() => callback());
      }
    };
- 
