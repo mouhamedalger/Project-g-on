@@ -10,9 +10,9 @@ module.exports.config = {
                          };
 
 module.exports.onStart = async({api,event,args,Threads,usersData}) => {
-const axios = global.nodemodule["axios"];
-const request = global.nodemodule["request"];
-const fs = global.nodemodule["fs-extra"];
+const axios = require["axios"];
+const request = require["request"];
+const fs = require["fs-extra"];
   var link = [
      "https://i.imgur.com/cuMzlKg.jpg",
      "https://i.imgur.com/2f52Onh.jpg",
