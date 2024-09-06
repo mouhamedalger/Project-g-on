@@ -12,9 +12,9 @@ module.exports.config = {
 const busyPath = __dirname + '/text/busy.json';
 const fs = require('fs');
 
-module.exports.onLoad = () => {
+module.exports.onLoad = () /*=> {
   if (!fs.existsSync(busyPath)) fs.writeFileSync(busyPath, JSON.stringify({}));
-}
+}*/
 
 module.exports.onChat = async function({ api, event, usersData }) {
     let busyData = JSON.parse(fs.readFileSync(busyPath));
