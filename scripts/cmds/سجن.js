@@ -4,9 +4,9 @@ module.exports.config = {
             	author: "محمد تانجيرو",
             	countDown: 5,
 	    	role: 0,
-            	description: { ar: "وضع صورتك أو صورة العضو الي تعمل له تاغ في السجن" },
-	    	category: "games",
-    		guide: { ar: "{pn} أو {pn} [@تاغ]" }
+            	description: { ar: "وضع صورتك، أو صورة الي تعمل له تاغ، أو صورة الي ترد عليه في في السجن" },
+	    	category: "edit",
+    		guide: { ar: "{pn} أو {pn} [@تاغ] {pn} [رد]" }
                          };
 const fs = require('fs');
 const axios = require('axios');
@@ -21,9 +21,9 @@ module.exports.onStart = async function ({ api, event, args, usersData }) {
   let Avatar = (
     await axios.get( `https://i.postimg.cc/1zmxGQTS/8uv38cfmc74ur1p5rtntitrddi.png`, { responseType: "arraybuffer" })).data;
   fs.writeFileSync(pathAva, Buffer.from(Avatar, "utf-8"));
-  let getWanted = (
+  let getprison = (
     await axios.get( `https://graph.facebook.com/${uid}/picture?height=1500&width=1500&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: "arraybuffer" })).data;
-  fs.writeFileSync(pathImg, Buffer.from(getWanted, "utf-8"));
+  fs.writeFileSync(pathImg, Buffer.from(getprison, "utf-8"));
   let baseImage = await loadImage(pathImg);
   let baseAva = await loadImage(pathAva);
   let canvas = createCanvas(baseImage.width, baseImage.height);
