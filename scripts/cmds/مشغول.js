@@ -49,7 +49,7 @@ module.exports.onChat = async function({ api, event, usersData }) {
     }
 }
 
-module.exports.onStart = async function({ api, event, args, Users }) {
+module.exports.onStart = async function({ api, event, args, usersData }) {
 	await new Promise(resolve => setTimeout(resolve, 1000));
     let busyData = JSON.parse(fs.readFileSync(busyPath));
     const { threadID, senderID, messageID, body } = event;
