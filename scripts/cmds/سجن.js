@@ -43,7 +43,7 @@ module.exports.onStart = async function ({ api, event, args, usersData }) {
   ctx.beginPath();
   const imageBuffer = canvas.toBuffer();
   fs.writeFileSync(pathImg, imageBuffer);
-  fs.removeSync(pathAva);
+  //fs.removeSync(pathAva);
   return api.sendMessage(
     { attachment: fs.createReadStream(pathImg) },
     threadID,
