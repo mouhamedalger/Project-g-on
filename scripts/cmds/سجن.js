@@ -8,12 +8,14 @@ module.exports.config = {
 	    	category: "games",
     		guide: { ar: "{pn} [@tag]" }
                          };
-
+const fs = require('fs');
+const axios = require('axios');
+const { loadImage, createCanvas } = require('canvas');
 module.exports.onStart = async function ({ api, event, args, Users }) {
   let { senderID, threadID, messageID } = event;
-  const { loadImage, createCanvas } = require("canvas");
+  /*const { loadImage, createCanvas } = require("canvas");
   const fs = require["fs-extra"];
-  const axios = require["axios"];
+  const axios = require["axios"];*/
   let pathImg = __dirname + "/cache/wiinted.png";
   let pathAva = __dirname + "/cache/avt.png";
   if (!args[0]) { var uid = senderID}
