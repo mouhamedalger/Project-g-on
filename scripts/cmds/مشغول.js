@@ -9,7 +9,7 @@ module.exports.config = {
     		guide: { ar: "{pn} [سبب الإنشغال]" }
                          };
 
-const busyPath = __dirname + '/cache/busy.json';
+const busyPath = __dirname + '/text/busy.json';
 const fs = require('fs');
 
 module.exports.onLoad = () => {
