@@ -16,7 +16,7 @@ module.exports.onLoad = () => {
   if (!fs.existsSync(busyPath)) fs.writeFileSync(busyPath, JSON.stringify({}));
 }
 
-module.exports.onChat = async function({ api, event, Users }) {
+module.exports.onChat = async function({ api, event, usersData }) {
     let busyData = JSON.parse(fs.readFileSync(busyPath));
     var { senderID, threadID, messageID, mentions } = event;
     if (senderID in busyData) {
@@ -39,7 +39,7 @@ module.exports.onChat = async function({ api, event, Users }) {
     
     for (const [ID, name] of Object.entries(mentions)) {
         if (ID in busyData) {
-            var infoBusy = busyData[ID], mentioner = await Users.getNameUser(senderID), replaceName = event.body.replace(`${name}`, "");
+            var infoBusy = busyData[ID], mentioner = await usersData.getNameUser(senderID), replaceName = event.body.replace(`${name}`, "");
             infoBusy.tag.push(`${mentioner}: ${replaceName == "" ? "تاغ واحد فقط 😆" : replaceName}`)
             busyData[ID] = infoBusy;
             fs.writeFileSync(busyPath, JSON.stringify(busyData, null, 4));
