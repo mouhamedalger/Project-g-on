@@ -1,12 +1,12 @@
 module.exports.config = {
                 name: "الغاز",
 		version: "1.3",
-            	author: "محمد تانجيرو",
-            	countDown: 5,
-	    	role: 0,
-            	description: { ar: "" },
-	    	category: "games",
-    		guide: { ar: "{pn}" }
+		author: "محمد تانجيرو",
+		countDown: 5,
+		role: 0,
+		description: { ar: "حل اللغز بكلمة واحدة" },
+		category: "events",
+		guide: { ar: "{pn}" }
                          };
 
 const questions = [
@@ -51,7 +51,7 @@ module.exports.handleReply = async function ({ api, event, message, handleReply,
     }
 };
 
-module.exports.onStart = async function ({ api, event, args,message, commandName, globalData, usersData, }) {
+module.exports.onStart = async function ({ api, event, args }) {
     const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
     const correctAnswer = randomQuestion.answer;
     const question = randomQuestion.question;
