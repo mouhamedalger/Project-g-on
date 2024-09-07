@@ -52,7 +52,7 @@ module.exports.onReply: async ({ message, Reply, event, commandName, globalData,
     }
 };
 
-module.exports.onStart = async function ({ api, event, args }) {
+module.exports.onStart = async function ({ api, event, args ,message, commandName, globalData, usersData }) {
     const { threadID, messageID, senderID } = event;
     const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
     const correctAnswer = randomQuestion.answer;
