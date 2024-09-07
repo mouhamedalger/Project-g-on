@@ -64,16 +64,16 @@ var msg = "";
     switch(Reply.type) {
         case "اختيار": {
             switch(event.body) {
-                case "1": msg = `✨ لقد عملت: ${work1}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd1} $!` ; Currencies.increaseMoney(event.senderID, coinsmhmd1); break;             
-                case "2": msg = `✨ لقد عملت: ${work2}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd2} $!` ; Currencies.increaseMoney(event.senderID, coinsmhmd2); break;
-                case "3": msg = `✨ لقد عملت: ${work3}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd3} $!` ; Currencies.increaseMoney(event.senderID, coinsmhmd3); break;
-                case "4": msg = `✨ لقد عملت: ${work4}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd4} $!` ; Currencies.increaseMoney(event.senderID, coinsmhmd4); break;
-                case "5": msg = `✨ لقد عملت: ${work5}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd5} $!` ; Currencies.increaseMoney(event.senderID, coinsmhmd5); break;
-                case "6": msg = `✨ لقد عملت: ${work6}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd6} $!` ; Currencies.increaseMoney(event.senderID, coinsmhmd6); break;
-                case "7": msg = `✨ لقد عملت: ${work7}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd7} $!` ; Currencies.increaseMoney(event.senderID, coinsmhmd7); break;
-                case "8": msg = `✨ لقد عملت: ${work8}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd8} $!` ; Currencies.increaseMoney(event.senderID, coinsmhmd8); break; 
-                case "9": msg = `✨ لقد عملت: ${work9}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd9} $!` ; Currencies.increaseMoney(event.senderID, coinsmhmd9); break;
-               case "10": msg = `✨ لقد عملت: ${work10}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd10} $!` ; Currencies.increaseMoney(event.senderID, coinsmhmd10); break;                break;
+                case "1": msg = `✨ لقد عملت: ${work1}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd1} $!` ; usersData.set(senderID, {money: userData.money + coinsmhmd1, data: userData.data}); break;             
+                case "2": msg = `✨ لقد عملت: ${work2}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd2} $!` ; usersData.set(senderID, {money: userData.money + coinsmhmd2, data: userData.data}); break;
+                case "3": msg = `✨ لقد عملت: ${work3}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd3} $!` ; usersData.set(senderID, {money: userData.money + coinsmhmd3, data: userData.data}); break;
+                case "4": msg = `✨ لقد عملت: ${work4}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd4} $!` ; usersData.set(senderID, {money: userData.money + coinsmhmd4, data: userData.data}); break;
+                case "5": msg = `✨ لقد عملت: ${work5}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd5} $!` ; usersData.set(senderID, {money: userData.money + coinsmhmd5, data: userData.data}); break;
+                case "6": msg = `✨ لقد عملت: ${work6}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd6} $!` ; usersData.set(senderID, {money: userData.money + coinsmhmd6, data: userData.data}); break;
+                case "7": msg = `✨ لقد عملت: ${work7}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd7} $!` ; usersData.set(senderID, {money: userData.money + coinsmhmd7, data: userData.data}); break;
+                case "8": msg = `✨ لقد عملت: ${work8}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd8} $!` ; usersData.set(senderID, {money: userData.money + coinsmhmd8, data: userData.data}); break; 
+                case "9": msg = `✨ لقد عملت: ${work9}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd9} $!` ; usersData.set(senderID, {money: userData.money + coinsmhmd9, data: userData.data}); break;
+               case "10": msg = `✨ لقد عملت: ${work10}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd10} $!` ; usersData.set(senderID, {money: userData.money + coinsmhmd10, data: userData.data}); break;                break;
                 default: break;
             };
             const choose = parseInt(event.body);
