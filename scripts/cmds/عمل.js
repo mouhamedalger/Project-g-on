@@ -96,7 +96,7 @@ var msg = "";
 module.exports.onStart = async ({ args, commandName, event, api, usersData, globalData, getLang }) => {
     const { threadID, messageID, senderID } = event;
     const cooldown = 1800000;
-    let data = (await usersData.getData(senderID))/*.data*/ || {};
+    let data = (await usersData.get/*Data*/(senderID))/*.data*/ || {};
     if (typeof data !== "undefined" && cooldown - (Date.now() - data.work1Time) > 0) {
         var time = cooldown - (Date.now() - data.work1Time),
             minutes = Math.floor(time / 60000),
