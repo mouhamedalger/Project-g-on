@@ -9,8 +9,8 @@ module.exports.config = {
 		guide: { ar: "{pn}" },
     envConfig: {cooldownTime: 1800000}
 };
-module.exports.languages = {
-    "en": {
+module.exports.langs = {
+    "ar": {
 
         "cooldown": "🍀✨ أنت اشتغلت اليوم ✨\n  حرصا على صحتك؛ أتركك\nترتاح، تعال اشتغل مجددا\nبعد: %1 دقيقة و %2 ثانية 💙"
     }
@@ -94,12 +94,11 @@ var msg = "";
     };
 }
 }
-module.exports.run = async ({  event, api, handleReply, Currencies, getText }) => {
+module.exports.onStart = async ({ args, commandName, event, api, usersData, globalData, getLang }) => {
     const { threadID, messageID, senderID } = event;
     const cooldown = global.configModule[this.config.name].cooldownTime;
-    let data = (await Currencies.getData(senderID)).data || {};
+    let data = (await usersData.getData(senderID))/*.data*/ || {};
     if (typeof data !== "undefined" && cooldown - (Date.now() - data.work1Time) > 0) {
-
         var time = cooldown - (Date.now() - data.work1Time),
             minutes = Math.floor(time / 60000),
             seconds = ((time % 60000) / 1000).toFixed(0); 
@@ -108,9 +107,9 @@ module.exports.run = async ({  event, api, handleReply, Currencies, getText }) =
     else {    
     return api.sendMessage("✨ مناصب الشغل المتوفرة ✨\n    💙ا—-—-—-—-—-—ا💙\n\n1 => وزارة الطاقة والمناجم🌋\n2 => وزارة الشؤون الدينية 🕌\n3 => وزارة المجاهدين ⚔️💣\n4 => وزارة الصناعة 🏭🏗\n5 => وزارة الرياضة ⛹️‍♂️⚽\n6 => وزارة التعليم 📚📒\n7 => وزارة الصحة 🩻🧬\n8 => وزارة الثقافة 💃🕺\n9 => وزارة الدفاع 💂‍♂️🪖\n10 => وزارة العدل ⚖️🔨\n\n  💙ا—-—-—-—-—-—-—ا💙\n✨ رد على الرسالة برقم الشغل\nالذي اخترته (من 1 إلى 10)", event.threadID, (error, info) => {
                 data.work1Time = Date.now();
-        global.client.handleReply.push({
+        global.GoatBot.onReply.set(info.messageID, {
             type: "choosee",
-            name: this.config.name,
+            commandName,
             author: event.senderID,
             messageID: info.messageID
           })  
