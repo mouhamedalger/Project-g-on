@@ -37,7 +37,7 @@ const questions = [
 { question: "حامل ومحمول، نصفه جاف ونصفه مبلول؟", answer: "السفينة" },
 ];
 
-module.exports.onReply = async function ({ api, event, message, Reply, globalData, usersData, }) {
+module.exports.onReply = async function ({ api, event, message, Reply, globalData, usersData }) {
     const { correctAnswer: answer } = Reply;
     const userAnswer = event.body.trim().toLowerCase();
     const correctAnswer = Reply.correctAnswer.toLowerCase();
@@ -52,7 +52,7 @@ module.exports.onReply = async function ({ api, event, message, Reply, globalDat
     }
 };
 
-module.exports.onStart = async function ({ api, event, args, commandName }) {
+module.exports.onStart = async function ({ api, event, args, commandName, usersData }) {
     const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
     const correctAnswer = randomQuestion.answer;
     const question = randomQuestion.question;
