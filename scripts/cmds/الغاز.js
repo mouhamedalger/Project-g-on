@@ -4,7 +4,7 @@ module.exports.config = {
             	author: "محمد تانجيرو",
             	countDown: 5,
 	    	role: 0,
-            	description: { ar: "ترسل ضحكات بعض الشخصيات الأسطورية" },
+            	description: { ar: "" },
 	    	category: "games",
     		guide: { ar: "{pn}" }
                          };
