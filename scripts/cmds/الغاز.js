@@ -43,10 +43,10 @@ module.exports.onReply = async function ({ api, event, message, Reply, globalDat
     const userAnswer = event.body.trim().toLowerCase();
     const correctAnswer = Reply.correctAnswer.toLowerCase();
     const userData = await usersData.get(senderID);
-    const userName = /*global.data.userData.get(event.senderID).name || */await usersData.getName(event.senderID);
+    const userName = await usersData.getName(event.senderID);
 
     if (userAnswer === correctAnswer) {
-        /*userData.Money(event.senderID + 100);*/await usersData.set(senderID, {money: userData.money + 100, data: userData.data});
+        await usersData.set(senderID, {money: userData.money + 100, data: userData.data});
         api.sendMessage(`🎊 تهانينا: ${userName} \n💙--- إجابتك صحيحة ---💙\n ༺ا-🌹-━━♡━━-🌹-ا༻\n    لقد حصلت على 100 $!`, event.threadID);
         api.unsendMessage(Reply.messageID); 
     } else {
@@ -54,8 +54,7 @@ module.exports.onReply = async function ({ api, event, message, Reply, globalDat
     }
 };
 
-module.exports.onStart = async function ({ api, event, args, commandName/*, usersData, globalData,*/ }) {
-    /*const userName = global.data.usersData.get(event.senderID).name || await usersData.get(event.senderID).name;*/
+module.exports.onStart = async function ({ api, event, args, commandName }) {
     const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
     const correctAnswer = randomQuestion.answer;
     const question = randomQuestion.question;
