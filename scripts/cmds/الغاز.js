@@ -38,13 +38,13 @@ const questions = [
 ];
 
 module.exports.onReply: async ({ message, Reply, event, commandName, globalData, usersData }) {
-    const { gameData } = Reply;
+    //const { gameData } = Reply;
     const userAnswer = event.body.trim().toLowerCase();
     const correctAnswer = Reply.correctAnswer.toLowerCase();
     const userName = global.data.userName.get(event.senderID) || await usersData.get(event.senderID).name;
 
     if (userAnswer === correctAnswer) {
-        Currencies.increaseMoney(event.senderID, 100);
+        //Currencies.increaseMoney(event.senderID, 100);
         api.sendMessage(`🎊 تهانينا: ${userName} \n💙--- إجابتك صحيحة ---💙\n ༺ا-🌹-━━♡━━-🌹-ا༻\n    لقد حصلت على 100 $!`, event.threadID);
         global.GoatBot.onReply.delete(Reply.messageID); 
     } else {
@@ -57,7 +57,7 @@ module.exports.onStart = async function ({ api, event, args ,message, commandNam
     const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
     const correctAnswer = randomQuestion.answer;
     const question = randomQuestion.question;
-    const gameData = question (options);
+   // const gameData = question (options);
     const message = `✨ حل اللغز بكلمة واحدة ✨\n ༺ا-🌹-━━♡━━-🌹-ا༻\n\n[ ${question} ]`;
 
     api.sendMessage({ body: message }, event.threadID, (error, info) => {
