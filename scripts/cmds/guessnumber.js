@@ -84,7 +84,7 @@ module.exports = {
 			win: "🎉 | Chúc mừng bạn đã đoán đúng số %1 sau %2 lần đoán và nhận được %3 điểm thưởng.",
 			loss: "🤦‍♂️ | Bạn đã thua, số đúng là %1."
 		},
-		en: {
+		ar: {
 			charts: "🏆 | Ranking:\n%1",
 			pageInfo: "Page %1/%2",
 			noScore: "⭕ | There is no one who has scored.",
