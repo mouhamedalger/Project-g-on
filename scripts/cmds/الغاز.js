@@ -59,12 +59,10 @@ module.exports.onStart = async function ({ api, event, args, message, commandNam
     const message = `✨ حل اللغز بكلمة واحدة ✨\n ༺ا-🌹-━━♡━━-🌹-ا༻\n\n[ ${question} ]`;
 
     api.sendMessage({ body: message }, event.threadID, (error, info) => {
-        if (!error) {
-            global.client.handleReply.push({
-                name: this.config.name,
+            global.GoatBot.onReply.set(info.messageID, {
+                commandName,
                 messageID: info.messageID,
-                correctAnswer: correctAnswer
+                correctAnswer
             });
-        }
     });
 };
