@@ -6,8 +6,7 @@ module.exports.config = {
 		role: 0,
 		description: { ar: "تاخذ رصيد مقابل العمل" },
 		category: "events",
-		guide: { ar: "{pn}" },
-                envConfig: {cooldownTime: 1800000}
+		guide: { ar: "{pn}" }
 };
 module.exports.langs = {
     "ar": {
