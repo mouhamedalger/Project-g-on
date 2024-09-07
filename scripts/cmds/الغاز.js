@@ -39,12 +39,13 @@ const questions = [
 
 module.exports.onReply = async function ({ api, event, message, Reply, globalData, usersData }) {
     const { correctAnswer: answer } = Reply;
+    const { threadID, messageID, senderID } = event;
     const userAnswer = event.body.trim().toLowerCase();
     const correctAnswer = Reply.correctAnswer.toLowerCase();
     const userName = global.data.usersData.get(event.senderID).name || await usersData.get(event.senderID).name;
 
     if (userAnswer === correctAnswer) {
-        Currencies.increaseMoney(event.senderID, 100);
+        usersData.Money(event.senderID + 100);
         api.sendMessage(`🎊 تهانينا: ${userName} \n💙--- إجابتك صحيحة ---💙\n ༺ا-🌹-━━♡━━-🌹-ا༻\n    لقد حصلت على 100 $!`, event.threadID);
         api.unsendMessage(handleReply.messageID); 
     } else {
