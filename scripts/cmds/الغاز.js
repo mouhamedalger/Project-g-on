@@ -43,7 +43,7 @@ module.exports.onReply = async function ({ api, event, message, Reply, globalDat
     const userAnswer = event.body.trim().toLowerCase();
     const correctAnswer = Reply.correctAnswer.toLowerCase();
     const userData = await usersData.get(senderID);
-    const userName = /*global.data.userData.get(event.senderID).name || */await usersData.get(event.senderID).name;
+    const userName = /*global.data.userData.get(event.senderID).name || */await usersData.getName(event.senderID);
 
     if (userAnswer === correctAnswer) {
         /*userData.Money(event.senderID + 100);*/await usersData.set(senderID, {money: userData.money + 100, data: userData.data});
