@@ -16,8 +16,8 @@ module.exports.langs = {
 }
 module.exports.onReply = async ({ event, api, Reply, usersData, getlang }) => {
     const { threadID, messageID, senderID } = event;
-    let data = (await Currencies.getData(senderID)).data || {};
-if (handleReply.author != event.senderID) 
+    let data = (await usersData.get/*Data*/(senderID))/*.data*/ || {};
+if (Reply.author != event.senderID) 
 return api.sendMessage("لا تسرق عمل الآخرين 😏، اعمل بنفسك يا نصاب", event.threadID, event.messageID)
 
 var coinsmhmd1 = Math.floor(Math.random() * 33000) + 8000;
