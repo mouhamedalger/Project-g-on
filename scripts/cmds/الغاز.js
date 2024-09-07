@@ -39,7 +39,7 @@ const questions = [
 
 module.exports.onReply: async ({ message, Reply, event, commandName, globalData }) {
     const userAnswer = event.body.trim().toLowerCase();
-    const correctAnswer = handleReply.correctAnswer.toLowerCase();
+    const correctAnswer = Reply.correctAnswer.toLowerCase();
     const userName = global.data.userName.get(event.senderID) || await usersData.get(event.senderID).name;
 
     if (userAnswer === correctAnswer) {
@@ -48,13 +48,13 @@ module.exports.onReply: async ({ message, Reply, event, commandName, globalData 
 			data: userData.data
 		});
         api.sendMessage(`🎊 تهانينا: ${userName} \n💙--- إجابتك صحيحة ---💙\n ༺ا-🌹-━━♡━━-🌹-ا༻\n    لقد حصلت على 100 $!`, event.threadID);
-        api.unsendMessage(handleReply.messageID); 
+        api.unsendMessage(Reply.messageID); 
     } else {
         api.sendMessage(`✨ خطأ، حاول مرة أخرى 🙄`, event.threadID,event.messageID);
     }
 };
 
-module.exports.onStart = async function ({ api, event, args }) {
+module.exports.onStart = async function ({ api, event, args, message, commandName, globalData, usersData }) {
     const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
     const correctAnswer = randomQuestion.answer;
     const question = randomQuestion.question;
@@ -63,8 +63,8 @@ module.exports.onStart = async function ({ api, event, args }) {
 
     api.sendMessage({ body: message }, event.threadID, (error, info) => {
         if (!error) {
-            global.client.handleReply.push({
-                name: this.config.name,
+            global.GoatBot.onReply.set(info.messageID,{
+                commandName,
                 messageID: info.messageID,
                 correctAnswer: correctAnswer
             });
