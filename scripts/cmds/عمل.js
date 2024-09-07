@@ -61,9 +61,8 @@ var mhmd10 = ['محاميا','قاضيا','محضرا قضائيا',' جوجا',
 var work10 = mhmd10[Math.floor(Math.random() * mhmd10.length)];
 
 var msg = "";
-    switch(handleReply.type) {
-        case "choosee": {
-
+    switch(Reply.type) {
+        case "اختيار": {
             switch(event.body) {
                 case "1": msg = `✨ لقد عملت: ${work1}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd1} $!` ; Currencies.increaseMoney(event.senderID, coinsmhmd1); break;             
                 case "2": msg = `✨ لقد عملت: ${work2}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd2} $!` ; Currencies.increaseMoney(event.senderID, coinsmhmd2); break;
@@ -80,13 +79,13 @@ var msg = "";
             const choose = parseInt(event.body);
             if (isNaN(event.body)) return api.sendMessage("✨ أدخل رقم من 1 لـ 10 🙄", event.threadID, event.messageID);
             if (choose > 10 || choose < 1) return api.sendMessage("✨ الرقم الذي أدخلته غير\nموجود في القائمة 🙄🫠", event.threadID, event.messageID);
-            api.unsendMessage(handleReply.messageID);
+            api.unsendMessage(Reply.messageID);
             if (msg == "⚡️Chưa update...") {
                 msg = "⚡️التحديث قريبا...";
             };
             return api.sendMessage(`${msg}`, threadID, async () => {
             data.work1Time = Date.now();
-            await Currencies.setData(senderID, { data });
+            await usersData.set(senderID, { data });
 
         });
 
@@ -107,7 +106,7 @@ module.exports.onStart = async ({ args, commandName, event, api, usersData, glob
     return api.sendMessage("✨ مناصب الشغل المتوفرة ✨\n    💙ا—-—-—-—-—-—ا💙\n\n1 => وزارة الطاقة والمناجم🌋\n2 => وزارة الشؤون الدينية 🕌\n3 => وزارة المجاهدين ⚔️💣\n4 => وزارة الصناعة 🏭🏗\n5 => وزارة الرياضة ⛹️‍♂️⚽\n6 => وزارة التعليم 📚📒\n7 => وزارة الصحة 🩻🧬\n8 => وزارة الثقافة 💃🕺\n9 => وزارة الدفاع 💂‍♂️🪖\n10 => وزارة العدل ⚖️🔨\n\n  💙ا—-—-—-—-—-—-—ا💙\n✨ رد على الرسالة برقم الشغل\nالذي اخترته (من 1 إلى 10)", event.threadID, (error, info) => {
                 data.work1Time = Date.now();
         global.GoatBot.onReply.set(info.messageID, {
-            type: "choosee",
+            type: "اختيار",
             commandName,
             author: event.senderID,
             messageID: info.messageID
