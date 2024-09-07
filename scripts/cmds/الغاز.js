@@ -37,34 +37,34 @@ const questions = [
 { question: "حامل ومحمول، نصفه جاف ونصفه مبلول؟", answer: "السفينة" },
 ];
 
-module.exports.onReply: async ({ message, Reply, event, commandName, globalData, usersData }) {
-    //const { gameData } = Reply;
+module.exports.handleReply = async function ({ api, event, message, handleReply, Currencies }) {
     const userAnswer = event.body.trim().toLowerCase();
-    const correctAnswer = Reply.correctAnswer.toLowerCase();
-    const userName = global.data.userName.get(event.senderID) || await usersData.get(event.senderID).name;
+    const correctAnswer = handleReply.correctAnswer.toLowerCase();
+    const userName = global.data.userName.get(event.senderID) || await Users.getNameUser(event.senderID);
 
     if (userAnswer === correctAnswer) {
-        //Currencies.increaseMoney(event.senderID, 100);
+        Currencies.increaseMoney(event.senderID, 100);
         api.sendMessage(`🎊 تهانينا: ${userName} \n💙--- إجابتك صحيحة ---💙\n ༺ا-🌹-━━♡━━-🌹-ا༻\n    لقد حصلت على 100 $!`, event.threadID);
-        global.GoatBot.onReply.delete(Reply.messageID); 
+        api.unsendMessage(handleReply.messageID); 
     } else {
         api.sendMessage(`✨ خطأ، حاول مرة أخرى 🙄`, event.threadID,event.messageID);
     }
 };
 
-module.exports.onStart = async function ({ api, event, args ,message, commandName, globalData, usersData }) {
-    const { threadID, messageID, senderID } = event;
+module.exports.onStart = async function ({ api, event, args,message, commandName, globalData, usersData, }) {
     const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
     const correctAnswer = randomQuestion.answer;
     const question = randomQuestion.question;
-   // const gameData = question (options);
+
     const message = `✨ حل اللغز بكلمة واحدة ✨\n ༺ا-🌹-━━♡━━-🌹-ا༻\n\n[ ${question} ]`;
 
     api.sendMessage({ body: message }, event.threadID, (error, info) => {
-            global.GoatBot.onReply.set(info.messageID, {
-                commandName,
+        if (!error) {
+            global.client.handleReply.push({
+                name: this.config.name,
                 messageID: info.messageID,
                 correctAnswer: correctAnswer
             });
+        }
     });
 };
