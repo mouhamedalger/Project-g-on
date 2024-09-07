@@ -42,7 +42,7 @@ module.exports.onReply = async function ({ api, event, message, Reply, globalDat
     const { threadID, messageID, senderID } = event;
     const userAnswer = event.body.trim().toLowerCase();
     const correctAnswer = Reply.correctAnswer.toLowerCase();
-    const userName = global.data.usersData.get(event.senderID).name || await usersData.get(event.senderID).name;
+    const userName = global.data.userData.get(event.senderID).name || await usersData.get(event.senderID).name;
 
     if (userAnswer === correctAnswer) {
         usersData.Money(event.senderID + 100);
@@ -53,7 +53,8 @@ module.exports.onReply = async function ({ api, event, message, Reply, globalDat
     }
 };
 
-module.exports.onStart = async function ({ api, event, args, commandName, usersData }) {
+module.exports.onStart = async function ({ api, event, args, commandName/*, usersData, globalData,*/ }) {
+    /*const userName = global.data.usersData.get(event.senderID).name || await usersData.get(event.senderID).name;*/
     const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
     const correctAnswer = randomQuestion.answer;
     const question = randomQuestion.question;
