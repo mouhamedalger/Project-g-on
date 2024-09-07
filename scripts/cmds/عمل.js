@@ -1,0 +1,119 @@
+module.exports.config = {
+                name: "عمل",
+		version: "1.3",
+		author: "محمد تانجيرو",
+		countDown: 5,
+		role: 0,
+		description: { ar: "تاخذ رصيد مقابل العمل" },
+		category: "events",
+		guide: { ar: "{pn}" },
+    envConfig: {cooldownTime: 1800000}
+};
+module.exports.languages = {
+    "en": {
+
+        "cooldown": "🍀✨ أنت اشتغلت اليوم ✨\n  حرصا على صحتك؛ أتركك\nترتاح، تعال اشتغل مجددا\nبعد: %1 دقيقة و %2 ثانية 💙"
+    }
+}
+module.exports.handleReply = async ({ event, api, handleReply, Currencies, getText }) => {
+    const { threadID, messageID, senderID } = event;
+    let data = (await Currencies.getData(senderID)).data || {};
+if (handleReply.author != event.senderID) 
+return api.sendMessage("لا تسرق عمل الآخرين 😏، اعمل بنفسك يا نصاب", event.threadID, event.messageID)
+
+var coinsmhmd1 = Math.floor(Math.random() * 33000) + 8000;
+var coinsmhmd2 = Math.floor(Math.random() * 6000) + 2000;
+var coinsmhmd3 = Math.floor(Math.random() * 20000) + 6000;
+var coinsmhmd4 = Math.floor(Math.random() * 26000) + 7000;
+var coinsmhmd5 = Math.floor(Math.random() * 50000) + 10000;
+var coinsmhmd6 = Math.floor(Math.random() * 11000) + 4000;
+var coinsmhmd7 = Math.floor(Math.random() * 15000) + 5000;
+var coinsmhmd8 = Math.floor(Math.random() * 41000) + 9000;
+var coinsmhmd9 = Math.floor(Math.random() * 8000) + 3000;
+var coinsmhmd10 = Math.floor(Math.random() * 5000) + 1000;
+var mhmd1 = ['منقبا عن الغاز','منقبا عن البترول','كهربائيا','في تحويل طاقة المياه إلى طاقة كهربائية','في تركيب الألواح الشمسية'];
+var work1 = mhmd1[Math.floor(Math.random() * mhmd1.length)];   
+
+var mhmd2 = ['مدرسا للقرآن','إماما','مؤذنا','خطيبا','داعية'];
+var work2 = mhmd2[Math.floor(Math.random() * mhmd2.length)]; 
+
+var mhmd3 = ['مجاهدا','جاسوسا على العدو','رسولا في الجيش','حاملا لراية الجهاد','قناصا'];
+var work3 = mhmd3[Math.floor(Math.random() * mhmd3.length)]; 
+
+var mhmd4 = ['صانع روبوتات','عاملا في مصنع الحديد','في الصناعات التقليدية','في الصناعات الصيدلانية','في تصنيع السيارات'];
+var work4 = mhmd4[Math.floor(Math.random() * mhmd4.length)]; 
+
+var mhmd5 = ['لاعب كرة القدم','مدربا','حارس مرمى','لاعب كرة اليد','لاعب كرة اليد'];
+var work5 = mhmd5[Math.floor(Math.random() * mhmd5.length)]; 
+
+var mhmd6 = ['مدرس مادة الرياضيات','مستشارا مدرسيا','مدرس مادة الفلسفة القبيحة','مفتشا مدرسيا','مدير مدرسة'];
+var work6 = mhmd6[Math.floor(Math.random() * mhmd6.length)];
+
+var mhmd7 = ['طبيبا عاما','جراحا','طبيب أسنان','طبيب عظام','طبيب عيون'];
+var work7 = mhmd7[Math.floor(Math.random() * mhmd7.length)];
+
+var mhmd8 = ['مغني راي','عازف بيانو','مغنيا في الأعراس','راقصا','في المسرح'];
+var work8 = mhmd8[Math.floor(Math.random() * mhmd8.length)];
+
+var mhmd9 = ['ضابط في الجيش','جنرالا','جنديا','عريفا في الجيش','رقيبا في الجيش'];
+var work9 = mhmd9[Math.floor(Math.random() * mhmd9.length)];
+
+var mhmd10 = ['محاميا','قاضيا','محضرا قضائيا',' جوجا','حارس سجن'];
+var work10 = mhmd10[Math.floor(Math.random() * mhmd10.length)];
+
+var msg = "";
+    switch(handleReply.type) {
+        case "choosee": {
+
+            switch(event.body) {
+                case "1": msg = `✨ لقد عملت: ${work1}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd1} $!` ; Currencies.increaseMoney(event.senderID, coinsmhmd1); break;             
+                case "2": msg = `✨ لقد عملت: ${work2}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd2} $!` ; Currencies.increaseMoney(event.senderID, coinsmhmd2); break;
+                case "3": msg = `✨ لقد عملت: ${work3}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd3} $!` ; Currencies.increaseMoney(event.senderID, coinsmhmd3); break;
+                case "4": msg = `✨ لقد عملت: ${work4}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd4} $!` ; Currencies.increaseMoney(event.senderID, coinsmhmd4); break;
+                case "5": msg = `✨ لقد عملت: ${work5}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd5} $!` ; Currencies.increaseMoney(event.senderID, coinsmhmd5); break;
+                case "6": msg = `✨ لقد عملت: ${work6}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd6} $!` ; Currencies.increaseMoney(event.senderID, coinsmhmd6); break;
+                case "7": msg = `✨ لقد عملت: ${work7}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd7} $!` ; Currencies.increaseMoney(event.senderID, coinsmhmd7); break;
+                case "8": msg = `✨ لقد عملت: ${work8}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd8} $!` ; Currencies.increaseMoney(event.senderID, coinsmhmd8); break; 
+                case "9": msg = `✨ لقد عملت: ${work9}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd9} $!` ; Currencies.increaseMoney(event.senderID, coinsmhmd9); break;
+               case "10": msg = `✨ لقد عملت: ${work10}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd10} $!` ; Currencies.increaseMoney(event.senderID, coinsmhmd10); break;                break;
+                default: break;
+            };
+            const choose = parseInt(event.body);
+            if (isNaN(event.body)) return api.sendMessage("✨ أدخل رقم من 1 لـ 10 🙄", event.threadID, event.messageID);
+            if (choose > 10 || choose < 1) return api.sendMessage("✨ الرقم الذي أدخلته غير\nموجود في القائمة 🙄🫠", event.threadID, event.messageID);
+            api.unsendMessage(handleReply.messageID);
+            if (msg == "⚡️Chưa update...") {
+                msg = "⚡️التحديث قريبا...";
+            };
+            return api.sendMessage(`${msg}`, threadID, async () => {
+            data.work1Time = Date.now();
+            await Currencies.setData(senderID, { data });
+
+        });
+
+    };
+}
+}
+module.exports.run = async ({  event, api, handleReply, Currencies, getText }) => {
+    const { threadID, messageID, senderID } = event;
+    const cooldown = global.configModule[this.config.name].cooldownTime;
+    let data = (await Currencies.getData(senderID)).data || {};
+    if (typeof data !== "undefined" && cooldown - (Date.now() - data.work1Time) > 0) {
+
+        var time = cooldown - (Date.now() - data.work1Time),
+            minutes = Math.floor(time / 60000),
+            seconds = ((time % 60000) / 1000).toFixed(0); 
+        return api.sendMessage(getText("cooldown", minutes, (seconds < 10 ? "0" + seconds : seconds)), event.threadID, event.messageID);
+    }
+    else {    
+    return api.sendMessage("✨ مناصب الشغل المتوفرة ✨\n    💙ا—-—-—-—-—-—ا💙\n\n1 => وزارة الطاقة والمناجم🌋\n2 => وزارة الشؤون الدينية 🕌\n3 => وزارة المجاهدين ⚔️💣\n4 => وزارة الصناعة 🏭🏗\n5 => وزارة الرياضة ⛹️‍♂️⚽\n6 => وزارة التعليم 📚📒\n7 => وزارة الصحة 🩻🧬\n8 => وزارة الثقافة 💃🕺\n9 => وزارة الدفاع 💂‍♂️🪖\n10 => وزارة العدل ⚖️🔨\n\n  💙ا—-—-—-—-—-—-—ا💙\n✨ رد على الرسالة برقم الشغل\nالذي اخترته (من 1 إلى 10)", event.threadID, (error, info) => {
+                data.work1Time = Date.now();
+        global.client.handleReply.push({
+            type: "choosee",
+            name: this.config.name,
+            author: event.senderID,
+            messageID: info.messageID
+          })  
+        })
+    }
+}
