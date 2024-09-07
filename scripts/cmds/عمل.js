@@ -16,7 +16,7 @@ module.exports.langs = {
 }
 module.exports.onReply = async ({ event, api, Reply, usersData, getlang }) => {
     const { threadID, messageID, senderID } = event;
-    let data = (await usersData.get/*Data*/(senderID))/*.data*/ || {};
+    const data = (await usersData.get/*Data*/(senderID))/*.data*/ || {};
 if (Reply.author != event.senderID) 
 return api.sendMessage("لا تسرق عمل الآخرين 😏، اعمل بنفسك يا نصاب", event.threadID, event.messageID)
 
@@ -64,16 +64,16 @@ var msg = "";
     switch(Reply.type) {
         case "اختيار": {
             switch(event.body) {
-                case "1": msg = `✨ لقد عملت: ${work1}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd1} $!` ; await usersData.set(senderID, {money: userData.money + coinsmhmd1, data: userData.data}); break;             
-                case "2": msg = `✨ لقد عملت: ${work2}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd2} $!` ; await usersData.set(senderID, {money: userData.money + coinsmhmd2, data: userData.data}); break;
-                case "3": msg = `✨ لقد عملت: ${work3}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd3} $!` ; await usersData.set(senderID, {money: userData.money + coinsmhmd3, data: userData.data}); break;
-                case "4": msg = `✨ لقد عملت: ${work4}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd4} $!` ; await usersData.set(senderID, {money: userData.money + coinsmhmd4, data: userData.data}); break;
-                case "5": msg = `✨ لقد عملت: ${work5}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd5} $!` ; await usersData.set(senderID, {money: userData.money + coinsmhmd5, data: userData.data}); break;
-                case "6": msg = `✨ لقد عملت: ${work6}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd6} $!` ; await usersData.set(senderID, {money: userData.money + coinsmhmd6, data: userData.data}); break;
-                case "7": msg = `✨ لقد عملت: ${work7}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd7} $!` ; await usersData.set(senderID, {money: userData.money + coinsmhmd7, data: userData.data}); break;
-                case "8": msg = `✨ لقد عملت: ${work8}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd8} $!` ; await usersData.set(senderID, {money: userData.money + coinsmhmd8, data: userData.data}); break; 
-                case "9": msg = `✨ لقد عملت: ${work9}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd9} $!` ; await usersData.set(senderID, {money: userData.money + coinsmhmd9, data: userData.data}); break;
-               case "10": msg = `✨ لقد عملت: ${work10}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd10} $!` ; await usersData.set(senderID, {money: userData.money + coinsmhmd10, data: userData.data}); break;                break;
+                case "1": msg = `✨ لقد عملت: ${work1}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd1} $!` ; await usersData.set(senderID, {money: data.money + coinsmhmd1, data: userData.data}); break;             
+                case "2": msg = `✨ لقد عملت: ${work2}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd2} $!` ; await usersData.set(senderID, {money: data.money + coinsmhmd2, data: userData.data}); break;
+                case "3": msg = `✨ لقد عملت: ${work3}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd3} $!` ; await usersData.set(senderID, {money: data.money + coinsmhmd3, data: userData.data}); break;
+                case "4": msg = `✨ لقد عملت: ${work4}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd4} $!` ; await usersData.set(senderID, {money: data.money + coinsmhmd4, data: userData.data}); break;
+                case "5": msg = `✨ لقد عملت: ${work5}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd5} $!` ; await usersData.set(senderID, {money: data.money + coinsmhmd5, data: userData.data}); break;
+                case "6": msg = `✨ لقد عملت: ${work6}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd6} $!` ; await usersData.set(senderID, {money: data.money + coinsmhmd6, data: userData.data}); break;
+                case "7": msg = `✨ لقد عملت: ${work7}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd7} $!` ; await usersData.set(senderID, {money: data.money + coinsmhmd7, data: userData.data}); break;
+                case "8": msg = `✨ لقد عملت: ${work8}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd8} $!` ; await usersData.set(senderID, {money: data.money + coinsmhmd8, data: userData.data}); break; 
+                case "9": msg = `✨ لقد عملت: ${work9}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd9} $!` ; await usersData.set(senderID, {money: data.money + coinsmhmd9, data: userData.data}); break;
+               case "10": msg = `✨ لقد عملت: ${work10}، وأتقنت عملك 🤝\n✅ خذ أجرك: ${coinsmhmd10} $!` ; await usersData.set(senderID, {money: data.money + coinsmhmd10, data: userData.data}); break;                break;
                 default: break;
             };
             const choose = parseInt(event.body);
