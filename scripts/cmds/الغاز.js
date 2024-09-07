@@ -37,7 +37,7 @@ const questions = [
 { question: "حامل ومحمول، نصفه جاف ونصفه مبلول؟", answer: "السفينة" },
 ];
 
-module.exports.handleReply = async function ({ api, event, message, handleReply, usersData }) {
+module.exports.onReply: async ({ message, Reply, event, commandName, globalData }) {
     const userAnswer = event.body.trim().toLowerCase();
     const correctAnswer = handleReply.correctAnswer.toLowerCase();
     const userName = global.data.userName.get(event.senderID) || await usersData.get(event.senderID).name;
