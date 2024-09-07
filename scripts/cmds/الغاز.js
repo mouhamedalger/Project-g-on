@@ -51,7 +51,7 @@ module.exports.handleReply = async function ({ api, event, message, handleReply,
     }
 };
 
-module.exports.onStart = async function ({ api, event, args, message, commandName, }) {
+module.exports.onStart = async function ({ api, event, args, commandName }) {
     const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
     const correctAnswer = randomQuestion.answer;
     const question = randomQuestion.question;
