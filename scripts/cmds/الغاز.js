@@ -41,7 +41,7 @@ module.exports.onReply = async function ({ api, event, message, Reply, globalDat
     const { correctAnswer: answer } = Reply;
     const userAnswer = event.body.trim().toLowerCase();
     const correctAnswer = Reply.correctAnswer.toLowerCase();
-    const userName = global.data.userName.get(event.senderID) || await Users.getNameUser(event.senderID);
+    const userName = global.data.usersData.get(event.senderID).name || await usersData.get(event.senderID).name;
 
     if (userAnswer === correctAnswer) {
         Currencies.increaseMoney(event.senderID, 100);
