@@ -42,12 +42,12 @@ module.exports.onReply = async function ({ api, event, message, Reply, globalDat
     const { threadID, messageID, senderID } = event;
     const userAnswer = event.body.trim().toLowerCase();
     const correctAnswer = Reply.correctAnswer.toLowerCase();
-    const userName = global.data.userData.get(event.senderID).name || await usersData.get(event.senderID).name;
+    const userName = /*global.data.userData.get(event.senderID).name || */await usersData.get(event.senderID).name;
 
     if (userAnswer === correctAnswer) {
         usersData.Money(event.senderID + 100);
         api.sendMessage(`🎊 تهانينا: ${userName} \n💙--- إجابتك صحيحة ---💙\n ༺ا-🌹-━━♡━━-🌹-ا༻\n    لقد حصلت على 100 $!`, event.threadID);
-        api.unsendMessage(handleReply.messageID); 
+        api.unsendMessage(Reply.messageID); 
     } else {
         api.sendMessage(`✨ خطأ، حاول مرة أخرى 🙄`, event.threadID,event.messageID);
     }
