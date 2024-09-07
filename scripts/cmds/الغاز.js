@@ -40,7 +40,7 @@ const questions = [
 module.exports.onReply = async function ({ api, event, message, Reply, globalData, usersData, }) {
     const { correctAnswer: answer } = Reply;
     const userAnswer = event.body.trim().toLowerCase();
-    const correctAnswer = handleReply.correctAnswer.toLowerCase();
+    const correctAnswer = Reply.correctAnswer.toLowerCase();
     const userName = global.data.userName.get(event.senderID) || await Users.getNameUser(event.senderID);
 
     if (userAnswer === correctAnswer) {
