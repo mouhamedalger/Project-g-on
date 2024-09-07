@@ -15,7 +15,7 @@ module.exports.langs = {
         "cooldown": "🍀✨ أنت اشتغلت اليوم ✨\n  حرصا على صحتك؛ أتركك\nترتاح، تعال اشتغل مجددا\nبعد: %1 دقيقة و %2 ثانية 💙"
     }
 }
-module.exports.handleReply = async ({ event, api, handleReply, Currencies, getText }) => {
+module.exports.onReply = async ({ event, api, Reply, usersData, getlang }) => {
     const { threadID, messageID, senderID } = event;
     let data = (await Currencies.getData(senderID)).data || {};
 if (handleReply.author != event.senderID) 
