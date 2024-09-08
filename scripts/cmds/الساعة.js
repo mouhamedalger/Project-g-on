@@ -4,14 +4,10 @@ module.exports.config = {
 		author: "محمد تانجيرو",
 		countDown: 5,
 		role: 0,
-		description: {
-			ar: "تذكير بالوقت في كل ساعة"
-		},
+		description: { ar: "تذكير بالوقت في كل ساعة" },
 		category: "box chat",
-		guide: {
-			ar: "تعمل أوتوماتيكي، لا تحتاج لكتابة الأمر"
-		}
-	},
+		guide: { ar: "تعمل أوتوماتيكي، لا تحتاج لكتابة الأمر" }
+	                },
 const nam = [
 {
 timer: '12:00:00 AM',
@@ -109,8 +105,8 @@ message: ['♡────ا •💜• ا────♡\n\nالساعة الآ
 timer: '11:00:00 PM',
 message: ['♡────ا •💜• ا────♡\n\nالساعة الآن بالجزائر: 23:00\nبتوقيت السعودية: 01:00 ⏳\n\n♡────ا •💜• ا────♡']
 }];
-module.exports.onEvent = o => setInterval(() => {
+module.exports.onLoad = o => setInterval(() => {
 const r = a => a[Math.floor(Math.random()*a.length)];
-if (á = nam.find(i => i.timer == new Date(Date.now()+3600000).toLocaleString().split(/,/).pop().trim())) global.data.allThreadID.forEach(i => o.api.sendMessage(r(á.message), i));
+if (á = nam.find(i => i.timer == new Date(Date.now()+3600000).toLocaleString().split(/,/).pop().trim())) global.GoatBot.allThreadID.forEach(i => o.api.sendMessage(r(á.message), i));
 }, 1000);
 module.exports.onStart = o => {};
