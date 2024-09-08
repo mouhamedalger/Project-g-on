@@ -6,8 +6,8 @@ module.exports.config = {
 		role: 0,
 		description: { ar: "تاخذ رصيد مقابل العمل" },
 		category: "events",
-		guide: { ar: "{pn}" }
-};
+		guide: { ar: "{pn}" },
+	        envConfig: { cooldownTime: 1800000 };
 module.exports.langs = {
     "ar": {
 
@@ -94,7 +94,7 @@ var msg = "";
 }
 module.exports.onStart = async ({ args, commandName, event, api, usersData, globalData, getLang }) => {
     const { threadID, messageID, senderID } = event;
-    const cooldown = 1800000 Ms;
+    const cooldown = command.config.cooldownTime;
     let data = (await usersData.get(senderID)) || {};
     if (typeof data !== "undefined" && cooldown - (Date.now() - data.work1Time) > 0) {
         var time = cooldown - (Date.now() - data.work1Time),
