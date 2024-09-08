@@ -7,7 +7,8 @@ module.exports.config = {
 		description: { ar: "تاخذ رصيد مقابل العمل" },
 		category: "events",
 		guide: { ar: "{pn}" },
-	        envConfig: { cooldownTime: 1800000 };
+	        envConfig: { cooldownTime: 1800000 }
+			   };
 module.exports.langs = {
     "ar": {
 
