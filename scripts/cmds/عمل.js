@@ -9,7 +9,7 @@ module.exports.config = {
 		guide: { ar: "{pn}" },
 	        envConfig: { cooldownTime: 1800000 }
 			   };
-module.exports.langs = { "ar": { cooldown: "🍀✨ أنت اشتغلت اليوم ✨\n  حرصا على صحتك؛ أتركك\nترتاح، تعال اشتغل مجددا\nبعد: %1 دقيقة و %2 ثانية 💙" }}
+module.exports.langs = { "ar": { cooldown: "🍀✨ أنت اشتغلت اليوم ✨\n  حرصا على صحتك؛ أتركك\nترتاح، تعال اشتغل مجددا\nبعد: %1 دقيقة و %2 ثانية 💙" }};
 module.exports.onReply = async ({ event, api, Reply, usersData, getlang }) => {
     const { threadID, messageID, senderID } = event;
     const userData = await usersData.get(senderID) || {};
