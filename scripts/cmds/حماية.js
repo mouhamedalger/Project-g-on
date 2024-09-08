@@ -43,13 +43,13 @@ module.exports = {
 	},
 
 	onStart: async function ({ message, event, args, threadsData, getLang }) {
-		if (!["تشغيل", "ايقاف"].includes(args[1]))
+		if (!["on", "off"].includes(args[1]))
 			return message.SyntaxError();
 		const { threadID } = event;
 		const dataAntiChangeInfoBox = await threadsData.get(threadID, "data.antiChangeInfoBox", {});
 		async function checkAndSaveData(key, data) {
 			// dataAntiChangeInfoBox[key] = args[1] === "on" ? data : false;
-			if (args[1] === "ايقاف")
+			if (args[1] === "off")
 				delete dataAntiChangeInfoBox[key];
 			else
 				dataAntiChangeInfoBox[key] = data;
