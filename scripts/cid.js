@@ -29,8 +29,8 @@ module.exports = {
         name: '✞𝐂𝐈𝐃✞',
         gender: '𝗕𝗢𝗬',
         hobby: '𝐅𝐨𝐨𝐭𝐛𝐚𝐥𝐥⚽',
-        relationship: '𝐂É𝐋𝐈𝐁𝐀𝐓𝐀𝐈𝐑𝐄🚶',
-        facebookLink: 'https://www.facebook.com/cidkageno228',
+        relationship: '𝐄𝐧 𝐜𝐨𝐮𝐩𝐥𝐞 𝐚𝐯𝐞𝐜 𝐦𝐚 𝐛𝐚𝐞 \n๖ۣ•҉°•✮•°𝙰𝙽𝙶𝙴🎀𝑳𝒂𝒆𝒕𝒊𝒕𝒊𝒂°•✮•°๖ۣ•҉\n,
+        facebookLink: 'https://www.facebook.com/cidkageno228'\nhttps://www.facebook.com/profile.php?id=61563886136337\n,
         bio: '★✞𝐂𝐢𝐝✞𝐤𝐚𝐠𝐞𝐧𝐨★ 😉 𝐑ê𝐯𝐞🥱:𝐝𝐞𝐯𝐞𝐧𝐮𝐞 𝐥\'𝐞𝐦𝐢𝐧𝐞𝐧𝐜𝐞 𝐝𝐚𝐧𝐬 𝐥\'𝐨𝐦𝐛𝐫𝐞×͜×'
       };
 
