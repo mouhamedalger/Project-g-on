@@ -27,7 +27,7 @@ async function getAIResponse(input, userId, messageID) {
         { url: 'https://ai-chat-gpt-4-lite.onrender.com/api/hercai', params: { question: input } }
     ];
 
-    let response = " ✰... 𝘚𝘢𝘭𝘶𝘵 👋 𝘦𝘯 𝘲𝘶𝘰𝘪 𝘱𝘶𝘪𝘴-𝘫𝘦 𝘷𝘰𝘶𝘴 𝘢𝘪𝘥𝘦𝘻 ?? .. ✰ ";
+    let response = " ✰... 𝘚𝘢𝘭𝘶𝘵 👋 𝘦𝘯 𝘲𝘶𝘰𝘪 𝘱𝘶𝘪𝘴-𝘫𝘦 𝘷𝘰𝘶𝘴 𝘢𝘪𝘥𝘦𝘻 ??\n NB:j'suis plus rapide que shadow\n.. ✰ ";
     let currentIndex = 0;
 
     for (let i = 0; i < services.length; i++) {
@@ -50,11 +50,11 @@ async function getAIResponse(input, userId, messageID) {
 
 module.exports = {
     config: {
-        name: 'ai',
+        name: 'gpt4',
         author: 'aesther',
         role: 0,
         category: 'ai',
-        shortDescription: 'ai to ask anything',
+        shortDescription: 'gpt4 to ask anything',
     },
     onStart: async function ({ api, event, args }) {
         const input = args.join(' ').trim();
@@ -68,14 +68,15 @@ module.exports = {
     },
     onChat: async function ({ event, message }) {
         const messageContent = event.body.trim().toLowerCase();
-        if (messageContent.startsWith("ai")) {
-            const input = messageContent.replace(/^ai\s*/, "").trim();
+        if (messageContent.startsWith("gpt4")) {
+            const input = messageContent.replace(/^gpt4\s*/, "").trim();
             const { response, messageID } = await getAIResponse(input, event.senderID, message.messageID);
             // Construct message with special fonts
             const formattedResponse = `╭──── • 🔵 • ─────╮
-   『𝐀𝐓𝐎𝐌𝐈𝐂✄IA』
-╰──── • 🔵 • ─────╯:${response} ✰`;
+   『𝐀𝐓𝐎𝐌𝐈𝐂✄GPT4』
+╰──── • 🔵 • ─────╯:${response} 🥴🇹🇬shadow🇹🇬🤫`;
             message.reply(formattedResponse, messageID);
         }
+
     }
 };
