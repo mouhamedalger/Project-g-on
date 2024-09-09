@@ -1,5 +1,4 @@
 const axios = require('axios');
-
 // Define the fonts mapping
 const fonts = {
     a: "𝘢", b: "𝘣", c: "𝘤", d: "𝘥", e: "𝘦", f: "𝘧", g: "𝘨", h: "𝘩", i: "𝘪",
@@ -73,9 +72,9 @@ module.exports = {
             const input = messageContent.replace(/^ai\s*/, "").trim();
             const { response, messageID } = await getAIResponse(input, event.senderID, message.messageID);
             // Construct message with special fonts
-            const formattedResponse = ` ✰ ╭──── • 🔵 • ─────╮
+            const formattedResponse = `╭──── • 🔵 • ─────╮
    『𝐀𝐓𝐎𝐌𝐈𝐂✄IA』
-╰──── • 🔵 • ─────╯ ✰:${response} ✰`;
+╰──── • 🔵 • ─────╯:${response} ✰`;
             message.reply(formattedResponse, messageID);
         }
     }
