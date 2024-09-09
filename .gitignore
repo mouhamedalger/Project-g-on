@@ -13,15 +13,15 @@ checkOriginCodeChanged.js
 *.test.*
 test.js
 
-//database/data/*
-//!database/data/.gitkeep
+database/data/*
+!database/data/.gitkeep
 
-//scripts/cmds/tmp/*
-//!scripts/cmds/tmp/.gitkeep
-//scripts/cmds/assets/guide
-//!scripts/cmds/assets/guide/.gitkeep
+scripts/cmds/tmp/*
+!scripts/cmds/tmp/.gitkeep
+scripts/cmds/assets/guide
+!scripts/cmds/assets/guide/.gitkeep
 
-//scripts/events/tmp/*
-//scripts/events/data/leaveAttachment
-//scripts/events/data/welcomeAttachment
-//!scripts/events/tmp/.gitkeep
+scripts/events/tmp/*
+scripts/events/data/leaveAttachment
+scripts/events/data/welcomeAttachment
+!scripts/events/tmp/.gitkeep
