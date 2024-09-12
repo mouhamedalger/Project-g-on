@@ -2,7 +2,7 @@ module.exports = {
   config: {
     name: "prefix",
     version: "1.1",
-    author: "𝐜𝐢𝐝",
+    author: "Shadow",
     countDown: 5,
     role: 0,
     shortDescription: "Display bot prefix",
@@ -15,15 +15,17 @@ module.exports = {
   onChat: async function ({ event, message }) {
     if (event.body && event.body.toLowerCase() === "prefix") {
       return message.reply({
-        body: `🔥 ♫𝐏𝐑𝐄𝐅𝐈𝐗♫ 🔥\n
-╔═════≛✬✬≛═════╗\n
-𝐁𝐎𝐓 𝑃𝑅𝐸𝑓𝐼𝑆: ¥\n
-╚═════≛✬✬≛═════╝\n
-🛠 *𝐂𝐑𝐄𝐀𝐓𝐎𝐑* 🛠\n
-╔═════✹✹✹═════╗\n
-★𝑪𝑰𝑫×͜×𝐊𝐀𝐆𝐄𝐍𝐎✔\n
-╚═════✹✹✹═════╝\n
-💡 Tape "help" pour la liste des commandes 💡`,
+        body: `╭━━━≪✠≫━━━╮
+🕊️ 𝑃𝑅𝐸𝐹𝐼𝑆 ✨ 𝑆𝐻𝐴𝐷𝐴𝑊 🕊️
+      ☛ 🎨¥🎨
+╰━━━≪✠≫━━━╯
+═════•【🎖】•═════
+🌟✨ 𝒞𝑅𝐸𝐴𝒯𝑜𝑅 ✨🌟
+═════•【🎖】•═════
+╭━━━≪✠≫━━━╮
+🚀 𝐂𝐢𝐝 ✄ 𝐊𝐚𝐠𝐞𝐧𝐨 🚀
+╰━━━≪✠≫━━━╯
+          ¥`,
         attachment: await global.utils.getStreamFromURL("https://i.ibb.co/PQQdjc8/image.jpg")
       });
     }
