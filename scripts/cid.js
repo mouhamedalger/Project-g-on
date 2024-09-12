@@ -29,8 +29,8 @@ module.exports = {
         name: '✞𝐂𝐈𝐃✞',
         gender: '𝗕𝗢𝗬',
         hobby: '𝐅𝐨𝐨𝐭𝐛𝐚𝐥𝐥⚽',
-        relationship: '𝐄𝐧 𝐜𝐨𝐮𝐩𝐥𝐞 𝐚𝐯𝐞𝐜 𝐦𝐚 𝐛𝐚𝐞 \n๖ۣ•҉°•✮•°𝙰𝙽𝙶𝙴🎀𝑳𝒂𝒆𝒕𝒊𝒕𝒊𝒂°•✮•°๖ۣ•҉\n,
-        facebookLink: 'https://www.facebook.com/cidkageno228'\nhttps://www.facebook.com/profile.php?id=61563886136337\n,
+        relationship: '𝐄𝐧 𝐜𝐨𝐮𝐩𝐥𝐞 𝐚𝐯𝐞𝐜 𝐦𝐚 𝐛𝐚𝐞 ๖ۣ•҉°•✮•°𝙰𝙽𝙶𝙴🎀𝑳𝒂𝒆𝒕𝒊𝒕𝒊𝒂°•✮•°๖ۣ•҉',
+        facebookLink: '1. 🌟 𝑴𝑬 🌟: https://www.facebook.com/cidkageno228\n2. 💖 𝑴𝒂 𝒃𝒂𝒆 💖: https://www.facebook.com/profile.php?id=61563886136337',
         bio: '★✞𝐂𝐢𝐝✞𝐤𝐚𝐠𝐞𝐧𝐨★ 😉 𝐑ê𝐯𝐞🥱:𝐝𝐞𝐯𝐞𝐧𝐮𝐞 𝐥\'𝐞𝐦𝐢𝐧𝐞𝐧𝐜𝐞 𝐝𝐚𝐧𝐬 𝐥\'𝐨𝐦𝐛𝐫𝐞×͜×'
       };
 
@@ -62,19 +62,21 @@ module.exports = {
       fs.writeFileSync(videoPath, Buffer.from(videoResponse.data, 'binary'));
 
       const response = `
-        𝗼𝘄𝗻𝗲𝗿 𝗶𝗻𝗳𝗼𝗿𝗺𝗮𝘁𝗶𝗼𝗻🍀:
+        🎩 𝗢𝘄𝗻𝗲𝗿 𝗜𝗻𝗳𝗼 𝗘𝘅𝗰𝗹𝘂𝘀𝗶𝘃𝗲 🍀:
 ❍⌇─➭ 
-(◍•ᴗ•◍)𝗡𝗔𝗠𝗘 : ${ownerInfo.name}
+🚹 (◍•ᴗ•◍) 𝗡𝗢𝗠 : ${ownerInfo.name}
 ❍⌇─➭ 
-♀𝗚𝗘𝗡𝗥𝗘♂: ${ownerInfo.gender}
+♂️♀️ 𝗚𝗘𝗡𝗥𝗘: ${ownerInfo.gender}
 ❍⌇─➭ 
-🏓𝗛𝗢𝗕𝗕𝗬⛹‍♂: ${ownerInfo.hobby}
+⚽ 🎯 𝗣𝗔𝗦𝗦𝗜𝗢𝗡 : ${ownerInfo.hobby}
 ❍⌇─➭ 
-𝗥𝗘𝗟𝗔𝗧𝗢𝗡𝗦𝗛𝗜𝗣💞: ${ownerInfo.relationship}
+💖 𝗦𝗧𝗔𝗧𝗨𝗦: ${ownerInfo.relationship}
 ❍⌇─➭ 
-𝗙𝗔𝗖𝗘𝗕𝗢𝗢𝗞🔗: ${ownerInfo.facebookLink}
+🔗 𝗙𝗔𝗖𝗘𝗕𝗢𝗢𝗞 𝗟𝗜𝗡𝗞𝗦:
+   1. 🌟 𝑴𝑬 🌟: ${ownerInfo.facebookLink.split('\n')[0]}
+   2. 💖 𝑴𝒂 𝒃𝒂𝒆 💖: ${ownerInfo.facebookLink.split('\n')[1]}
 ❍⌇─➭ 
-      ◈ 𝗦𝗧𝗔𝗧𝗨𝗦 ◈: ${ownerInfo.bio} 🇹🇬`;
+⭐ 𝗕𝗜𝗢: ${ownerInfo.bio} 🇹🇬`;
 
       await api.sendMessage({
         body: response,
