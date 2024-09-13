@@ -41,5 +41,5 @@ module.exports = async (server) => {
 			log.info("SOCKET IO", `Client disconnected from socket: ${socket.id}`);
 		});
 	});
+	
 };
-
