@@ -1,77 +1,91 @@
+const axios = require('axios');
+const fs = require('fs-extra');
+const ytdl = require('ytdl-core');
+
+// Clé API YouTube
+const API_KEY = 'AIzaSyB9qShTA1lPNfw-Vfodp6ZaR_yqQ87HWoI';
+
 module.exports = {
   config: {
     name: "youtube",
-    version: "1.0",
+    version: "1.2", // Version mise à jour
     role: 0,
-    author: "kshitiz",
+    author: "Cid Kageno", // Auteur modifié
     cooldowns: 40,
-    shortdescription: "send YouTube video",
+    shortdescription: "Send YouTube video",
     longdescription: "",
     category: "video",
     usages: "{pn} video name",
     dependencies: {
       "fs-extra": "",
-      "request": "",
       "axios": "",
-      "ytdl-core": "",
-      "yt-search": ""
+      "ytdl-core": ""
     }
   },
 
   onStart: async ({ api, event }) => {
-    const axios = require("axios");
-    const fs = require("fs-extra");
-    const ytdl = require("ytdl-core");
-    const request = require("request");
-    const yts = require("yt-search");
-
     const input = event.body;
-    const text = input.substring(12);
     const data = input.split(" ");
 
     if (data.length < 2) {
-      return api.sendMessage("Please specify a video name.", event.threadID);
+      return api.sendMessage("⚠ **Erreur :** Vous devez spécifier un nom de vidéo. Exemple : `{pn} chat mignon`", event.threadID);
     }
 
     data.shift();
     const videoName = data.join(" ");
 
     try {
-      api.sendMessage(`✅ | Searching video for "${videoName}".\n⏳ | Please wait...`, event.threadID);
+      api.sendMessage(`🔍 | Recherche de la vidéo pour "${videoName}" en cours...\n⏳ | Veuillez patienter...`, event.threadID);
 
-      const searchResults = await yts(videoName);
-      if (!searchResults.videos.length) {
-        return api.sendMessage("No video found.", event.threadID, event.messageID);
+      // Requête API YouTube
+      const response = await axios.get('https://www.googleapis.com/youtube/v3/search', {
+        params: {
+          part: 'snippet',
+          q: videoName,
+          type: 'video',
+          maxResults: 1,
+          key: API_KEY
+        }
+      });
+
+      const video = response.data.items[0];
+      if (!video) {
+        return api.sendMessage("❌ **Aucune vidéo trouvée.**\n🔍 **Pour :** *\"" + videoName + "\"*", event.threadID, event.messageID);
       }
 
-      const video = searchResults.videos[0];
-      const videoUrl = video.url;
+      const videoUrl = `https://www.youtube.com/watch?v=${video.id.videoId}`;
+      console.log('Video URL:', videoUrl); // Pour débogage
 
-      const stream = ytdl(videoUrl, { filter: "audioandvideo" });
+      const stream = ytdl(videoUrl, { filter: 'audioandvideo' });
 
       const fileName = `${event.senderID}.mp4`;
       const filePath = __dirname + `/cache/${fileName}`;
 
+      // Crée le dossier /cache s'il n'existe pas
+      if (!fs.existsSync(__dirname + '/cache')) {
+        fs.mkdirSync(__dirname + '/cache');
+      }
+
       stream.pipe(fs.createWriteStream(filePath));
 
       stream.on('response', () => {
-        console.info('[DOWNLOADER]', 'Starting download now!');
+        console.info('[DOWNLOADER]', 'Téléchargement en cours !');
       });
 
       stream.on('info', (info) => {
-        console.info('[DOWNLOADER]', `Downloading video: ${info.videoDetails.title}`);
+        console.info('[DOWNLOADER]', `Téléchargement de la vidéo : ${info.videoDetails.title}`);
       });
 
       stream.on('end', () => {
-        console.info('[DOWNLOADER] Downloaded');
+        console.info('[DOWNLOADER] Téléchargement terminé');
 
         if (fs.statSync(filePath).size > 26214400) {
           fs.unlinkSync(filePath);
-          return api.sendMessage('The file could not be sent because it is larger than 25MB.', event.threadID);
+          return api.sendMessage('⚠ **Le fichier dépasse 25 Mo et ne peut pas être envoyé.**', event.threadID);
         }
 
         const message = {
-          body: `📹 | Here's your video\n\n🔮 | Title: ${video.title}\n⏰ | Duration: ${video.duration.timestamp}`,
+          body: `🎬 **Voici votre vidéo !**\n\n📹 **Titre :** *${video.snippet.title}*\n🗓️ **Publié le :** *${video.snippet.publishedAt}*\n🔗 **Regarder :** [Cliquez ici](${videoUrl})\n\n🔄 **N\'hésitez pas à demander d\'autres vidéos !**`,
           attachment: fs.createReadStream(filePath)
         };
 
@@ -80,8 +94,8 @@ module.exports = {
         });
       });
     } catch (error) {
-      console.error('[ERROR]', error);
-      api.sendMessage(' An error occurred while processing the command.', event.threadID);
+      console.error('[ERROR]', error.response ? error.response.data : error.message); // Pour débogage
+      api.sendMessage('⚠ **Une erreur est survenue lors du traitement de la commande.** Veuillez réessayer plus tard.', event.threadID);
     }
   }
 };
