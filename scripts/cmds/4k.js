@@ -17,6 +17,7 @@ module.exports = {
 	},
 
 	onStart: async function ({ message, args, event, api }) {
+		const apiKey = "b744644a-1d52-4ddc-b045-009aa5089e26"; // Ajoute ta clé API ici
 		const getImageUrl = () => {
 			if (event.type === "message_reply") {
 				const replyAttachment = event.messageReply.attachments[0];
@@ -38,7 +39,7 @@ module.exports = {
 
 			message.reply("⏳ | Enhancing your image, please wait...");
 
-			const response = await axios.get(`https://www.api.vyturex.com/upscale?imageUrl=${shortUrl}`);
+			const response = await axios.get(`https://www.api.vyturex.com/upscale?imageUrl=${shortUrl}&apiKey=${apiKey}`); // Inclure l'API Key ici
 			const resultUrl = response.data.resultUrl;
 
 			message.reply({ body: "✔️ | Your image has been enhanced.", attachment: await global.utils.getStreamFromURL(resultUrl) });
