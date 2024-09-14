@@ -61,7 +61,7 @@ module.exports = {
     en: {
       final: "░▒▓█►─═𝐒𝐇𝐀𝐃𝐎𝐖═─◄█▓▒░",
       header: "☮▁▂☾♛𝐀𝐓𝐎𝐌𝐈𝐂🚀𝐆𝐏𝐓4♛☽▂▁☮",
-      footer: "",
+      footer: "░▒▓█►─═𝐒𝐇𝐀𝐃𝐎𝐖═─◄█▓▒░",
     }
   },
 
@@ -96,7 +96,7 @@ module.exports = {
       }
 
       if (prompt === 'Gpt4') {
-        const greetingMessage = `${getLang("header")}\n✌✌(•ิ‿•ิ)✌✌ Yo🫡 humain(e).🥴 C'est Cid✔️. Balance ton problème🧐, je suis le seul à pouvoir t'aider en 3s⏳🛌🪅 ✨✌✌(•ิ‿•ิ)✌✌\n${getLang("footer")}`;
+        const greetingMessage = `${getLang("header")}\n✌✌(•ิ‿•ิ)✌✌ 𝒀𝒐🫡 𝒉𝒖𝒎𝒂𝒊𝒏(𝒆).🥴 𝑪'𝒆𝒔𝒕 𝑪𝒊𝒅✔️. 𝑩𝒂𝒍𝒂𝒏𝒄𝒆 𝒕𝒐𝒏 𝒑𝒓𝒐𝒃𝒍è𝒎𝒆🧐, 𝒋𝒆 𝒔𝒖𝒊𝒔 𝒍𝒆 𝒔𝒆𝒖𝒍 à 𝒑𝒐𝒖𝒗𝒐𝒊𝒓 𝒕'𝒂𝒊𝒅𝒆𝒓 𝒆𝒏 3𝒔⏳🛌🪅 ✨✌✌(•ิ‿•ิ)✌✌\n${getLang("footer")}`;
         api.sendMessage(greetingMessage, event.threadID, event.messageID);
         console.log('Sent greeting message as a reply to user');
         return;
