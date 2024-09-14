@@ -35,17 +35,20 @@ module.exports = {
 
 		try {
 			const imageUrl = await getImageUrl();
+			console.log("Image URL:", imageUrl); // Ajout de log
+
 			const shortUrl = await tinyurl.shorten(imageUrl);
+			console.log("Short URL:", shortUrl); // Ajout de log
 
 			message.reply("⏳ | Enhancing your image, please wait...");
 
-			const response = await axios.get(`https://www.api.vyturex.com/upscale?imageUrl=${shortUrl}&apiKey=${apiKey}`); // Inclure l'API Key ici
+			const response = await axios.get(`https://www.api.vyturex.com/upscale?imageUrl=${shortUrl}&apiKey=${apiKey}`);
 			const resultUrl = response.data.resultUrl;
 
 			message.reply({ body: "✔️ | Your image has been enhanced.", attachment: await global.utils.getStreamFromURL(resultUrl) });
 		} catch (error) {
+			console.error(error); // Ajout de log
 			message.reply("❌ | Error: " + error.message);
-			// Log error for debugging: console.error(error);
 		}
 	}
 };
