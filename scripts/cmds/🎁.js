@@ -14,6 +14,6 @@
         message,
         getLang
     }) {
-        if (event.body && event.body.toLowerCase() == "🎁") return message.reply("tu devrais donner ça à DX 🤗 ce grâce à lui si j'existe ");
+        if (event.body && event.body.toLowerCase() == "🎁") return message.reply("tu devrais donner ça à ☛『𝐜𝐢𝐝』 🤗 ce grâce à lui si j'existe ");
     }
 }
