@@ -1,5 +1,4 @@
-!cmd install ok.js. module.exports = {
-    config: {
+ module.exports = {    config: {
         name: "ok",
         version: "1.0",
         author: "cid kageno ",
