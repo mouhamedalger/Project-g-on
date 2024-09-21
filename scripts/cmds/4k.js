@@ -1,54 +1,56 @@
-const axios = require('axios');
+const a = require('axios');
 const tinyurl = require('tinyurl');
-
 module.exports = {
-	config: {
-		name: "4k",
-		aliases: ["4k", "remini"],
-		version: "1.0",
-		author: "𝐂𝐈𝐃×͜×𝐊𝐀𝐆𝐄𝐍𝐎",
-		countDown: 15,
-		role: 0,
-		longDescription: "Upscale your image to 4K resolution.",
-		category: "image",
-		guide: {
-			en: "{pn} reply to an image to enhance it."
-		}
-	},
+  config: {
+    name: "4k",
+    aliases: ["4k", "upscale"],
+    version: "1.0",
+    author: "JARiF", //pharouk
+    countDown: 15,
+    role: 0,
+    longDescription: "Upscale your image.",
+    category: "image",
+    guide: {
+      en: "{pn} reply to an image"
+    }
+  },
 
-	onStart: async function ({ message, args, event, api }) {
-		const apiKey = "b744644a-1d52-4ddc-b045-009aa5089e26"; // Ajoute ta clé API ici
-		const getImageUrl = () => {
-			if (event.type === "message_reply") {
-				const replyAttachment = event.messageReply.attachments[0];
-				if (["photo", "sticker"].includes(replyAttachment?.type)) {
-					return replyAttachment.url;
-				} else {
-					throw new Error("🕶️ | Must reply to an image or sticker.");
-				}
-			} else if (args[0]?.match(/(https?:\/\/.*\.(?:png|jpg|jpeg))/g) || null) {
-				return args[0];
-			} else {
-				throw new Error("⚠️ | Please reply to an image.");
-			}
-		};
+  onStart: async function ({ message, args, event, api }) {
+    let imageUrl;
 
-		try {
-			const imageUrl = await getImageUrl();
-			console.log("Image URL:", imageUrl); // Ajout de log
+    if (event.type === "message_reply") {
+      const replyAttachment = event.messageReply.attachments[0];
 
-			const shortUrl = await tinyurl.shorten(imageUrl);
-			console.log("Short URL:", shortUrl); // Ajout de log
+      if (["photo", "sticker"].includes(replyAttachment?.type)) {
+        imageUrl = replyAttachment.url;
+      } else {
+        return api.sendMessage(
+          { body: "💢| 𝙧𝙚𝙥𝙡𝙮 𝙢𝙪𝙨𝙩 𝙗𝙚 𝙖𝙣 𝙞𝙢𝙖𝙜𝙚." },
+          event.threadID
+        );
+      }
+    } else if (args[0]?.match(/(https?:\/\/.*\.(?:png|jpg|jpeg))/g)) {
+      imageUrl = args[0];
+    } else {
+      return api.sendMessage(
+        { body: "💢 | 𝙍𝙀𝙋𝙇𝙔 𝙏𝙊 𝘼𝙉 𝙈𝙀𝙎𝙎𝙀𝙉𝙂𝙀." },
+        event.threadID
+      );
+    }
 
-			message.reply("⏳ | Enhancing your image, please wait...");
+    try {
+      const url = await tinyurl.shorten(imageUrl);
+      const response = await a.get(`https://www.api.vyturex.com/upscale?imageUrl=${url}`);
 
-			const response = await axios.get(`https://www.api.vyturex.com/upscale?imageUrl=${shortUrl}&apiKey=${apiKey}`);
-			const resultUrl = response.data.resultUrl;
+      message.reply("🔹𝗪𝗔𝗜𝗧.....");
 
-			message.reply({ body: "✔️ | Your image has been enhanced.", attachment: await global.utils.getStreamFromURL(resultUrl) });
-		} catch (error) {
-			console.error(error); // Ajout de log
-			message.reply("❌ | Error: " + error.message);
-		}
-	}
+      const resultUrl = response.data.resultUrl;
+
+      const imageData = await global.utils.getStreamFromURL(resultUrl);
+
+      message.reply({ body: "🔸 | [𝟰𝗞].", attachment: imageData });
+    } catch (error) {
+      message.reply("💢| Error: " + error.message);
+    }
+  }
 };
