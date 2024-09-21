@@ -104,7 +104,6 @@ handlerEvents.onlyAdmin=❌ | Only group administrators can use the command "%1"
 handlerEvents.onlyAdminToUseOnReply=❌ | Only group administrators can use the reply function of the command "%1"
 handlerEvents.onlyAdminToUseOnReaction=❌ | Only group administrators can use the reaction function of the command "%1" \n≕≔≕≔≕≔≕≔≕≔≕≔≕≔≕≔≕≔\n☣『𝐒𝐇𝐀𝐃𝐎𝐖』☣
 handlerEvents.onlyAdminBot2=❌ | 🕵️‍♂️🌑 𝑆𝑒𝑢𝑙 🌟  ░▒▓█►─═𝐂𝐢𝐝✄𝐊𝐚𝐠𝐞𝐧𝐨═─◄█▓▒░  𝑢𝑡𝑖𝑙𝑖𝑠𝑒 𝑙𝑎 𝑐𝑜𝑚𝑚𝑎𝑛𝒹𝑒  🌟🕵️‍♂️
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 🌌🔮 𝑂𝓂𝒷𝓇𝑒𝒹 𝒾𝓃 𝓉𝒽𝑒 𝒸𝒽𝒶𝓈𝓂 𝑜𝒻 𝓉𝒽𝑒 𝒹𝒶𝓇𝓀𝓃𝑒𝒾𝓃𝑔 🌌🔮 ✨%1✨
 handlerEvents.onlyAdminBot2ToUseOnReply=❌ | Only bot's admin can use the reply function of the command "%1"
 handlerEvents.onlyAdminBot2ToUseOnReaction=❌ | Only bot's admin can use the reaction function of the command "%1"
