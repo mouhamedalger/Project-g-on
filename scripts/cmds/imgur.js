@@ -38,7 +38,7 @@ module.exports = {
 
             if (response.data && response.data.data && response.data.data.link) {
                 const imgurLink = response.data.data.link;
-                message.reply({ body: `🎁𝐢𝐦𝐚𝐠𝐞 𝐮𝐩𝐥𝐨𝐚𝐝💻 𝐛𝐲 𝐜𝐢𝐝×͜×☛⏳:✨『 ${imgurLink}`』✨ });
+                message.reply({ body: `🎁𝐢𝐦𝐚𝐠𝐞 𝐮𝐩𝐥𝐨𝐚𝐝💻 𝐛𝐲 𝐜𝐢𝐝×͜×☛⏳:${imgurLink}`});
             } else {
                 message.reply("🙆🙆𝐨𝐨𝐩𝐬.");
             }
