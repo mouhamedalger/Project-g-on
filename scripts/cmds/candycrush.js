@@ -1,7 +1,7 @@
 const fs = require('fs').promises;
 const path = require('path');
 
-const ccDataFilePath = path.join(__dirname, 'cc.json');
+const ccDataFilePath = path.join(__dirname, '/text/cc.json');
 
 module.exports = {
     config: {
